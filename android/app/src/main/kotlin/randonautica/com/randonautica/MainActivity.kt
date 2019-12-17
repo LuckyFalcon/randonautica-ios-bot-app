@@ -1,4 +1,4 @@
-package randonautica.com.randonautica
+package com.randonautica.app
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
