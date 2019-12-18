@@ -13,10 +13,10 @@ class BotWebView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Fatumbot"),
+          title: Text("Randonautica"),
         ),
         body: WebView(
-          initialUrl: "https://devbot.randonauts.com",
+          initialUrl: "https://devbot.randonauts.com?src=ios",
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController webViewController) {
             _controller.complete(webViewController);
