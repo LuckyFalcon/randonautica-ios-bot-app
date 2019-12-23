@@ -16,7 +16,7 @@ class BotWebView extends StatelessWidget {
           title: Text("Randonautica"),
         ),
         body: WebView(
-          initialUrl: "https://devbot.randonauts.com?src=ios",
+          initialUrl: "https://devbot.randonauts.com/devbot.html?src=ios",
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController webViewController) {
             _controller.complete(webViewController);
