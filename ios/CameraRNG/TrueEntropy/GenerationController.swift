@@ -142,8 +142,22 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
     updateValue(row: 5, val: String(format:"%.2f%%",  col!.corruptPixels))
   }
 
+  func bytesConvertToHexstring(byte : [UInt8]) -> String {
+      var string = ""
+
+      for val in byte {
+          //getBytes(&byte, range: NSMakeRange(i, 1))
+          string = string + String(format: "%02x", val)
+      }
+
+      return string
+  }
+  
   func uploadEntropy(entropy: [UInt8], blockNumber: Int) {
     // soliax - was crashing here trying to call main UI thread from background thread
+    //print(self.bytesConvertToHexstring(byte: entropy))
+    //entropy.reduce("", combine: { $0 + String(format: "%02x", $1)})
+    print(entropy.map { String(format: "%02x", $0) }.joined())
     return
 
     self.blockNumber = blockNumber
