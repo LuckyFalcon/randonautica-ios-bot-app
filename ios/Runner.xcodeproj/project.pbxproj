@@ -20,16 +20,6 @@
 		BD6A222B9F5A3FDB65BBFFA0 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E5FBFA4996276451734D8 /* Pods_Runner.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F49DDD8023AA5785002C095E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F443FFE123AA40A80022C36B /* TrueEntropy.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A5CBBF1C1C8A83FC00693175;
-			remoteInfo = TrueEntropy;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -65,7 +55,6 @@
 		9C20672611CC58690BD68886 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		B482AD5A4B81CDB5B59D2F4E /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		CB2E5FBFA4996276451734D8 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F443FFE123AA40A80022C36B /* TrueEntropy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TrueEntropy.xcodeproj; path = .././CameraRNG/TrueEntropy.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +97,6 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
-				F4CB00B423AA570000D8DA26 /* CameraRNG */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
@@ -154,22 +142,6 @@
 				CB2E5FBFA4996276451734D8 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F49DDD7D23AA5785002C095E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F49DDD8123AA5785002C095E /* camrng.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		F4CB00B423AA570000D8DA26 /* CameraRNG */ = {
-			isa = PBXGroup;
-			children = (
-				F443FFE123AA40A80022C36B /* TrueEntropy.xcodeproj */,
-			);
-			path = CameraRNG;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,28 +196,12 @@
 			mainGroup = 97C146E51CF9000F007C117D;
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = F49DDD7D23AA5785002C095E /* Products */;
-					ProjectRef = F443FFE123AA40A80022C36B /* TrueEntropy.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		F49DDD8123AA5785002C095E /* camrng.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = camrng.app;
-			remoteRef = F49DDD8023AA5785002C095E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		97C146EC1CF9000F007C117D /* Resources */ = {
