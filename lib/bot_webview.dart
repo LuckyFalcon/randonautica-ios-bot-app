@@ -3,9 +3,35 @@ import 'package:flutter/material.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
 
+// camrng
+import 'package:flutter/services.dart';
+
 class BotWebView extends StatelessWidget {
-  final Completer<WebViewController> _controller =
-  Completer<WebViewController>();
+  final Completer<WebViewController> _controller = Completer<WebViewController>();
+  WebViewController webView;
+
+  //
+  // camrng
+  //
+  static const platform = const MethodChannel('com.randonautica.app');
+  // flutter->ios(swift) (used to load the TrueEntropy Camera RNG view controller
+  Future<void> _navToCamRNG(int bytesNeeded) async {
+    try {
+      await platform.invokeMethod('goToTrueEntropy', bytesNeeded);
+    } on PlatformException catch (e) {
+      print("Failed: '${e.message}'.");
+    }
+  }
+  // ios(swift)->flutter (used as a callback so we are given the GID of entropy generated and uploaded to the libwrapper)
+  Future<dynamic> _handleMethod(MethodCall call) async {
+    switch(call.method) {
+      case "gid":
+        debugPrint(call.arguments);
+        // flutter->javascript (send to bot the gid)
+        webView.evaluateJavascript('sendGidToBot("${call.arguments}");');
+        return new Future.value("");
+    }
+  }
 
   BotWebView();
 
@@ -22,11 +48,14 @@ class BotWebView extends StatelessWidget {
             JavascriptChannel(
                 name: 'flutterChannel_loadCamRNGWithBytesNeeded',
                 onMessageReceived: (JavascriptMessage message) {
-                  print(message.message);
+                  //print(message.message);
+                  platform.setMethodCallHandler(_handleMethod); // for gid callback
+                  _navToCamRNG(int.parse(message.message)); // open swift TrueEntropy Camera RNG view
                 }),
             // we can have more than one channels
           ]),
           onWebViewCreated: (WebViewController webViewController) {
+            webView = webViewController;
             _controller.complete(webViewController);
           },
         ));

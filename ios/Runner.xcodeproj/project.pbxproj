@@ -18,6 +18,41 @@
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		BD6A222B9F5A3FDB65BBFFA0 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E5FBFA4996276451734D8 /* Pods_Runner.framework */; };
+		F492F8BC23C0805D00B4D08A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8BB23C0805D00B4D08A /* Coordinator.swift */; };
+		F492F8BE23C0806B00B4D08A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8BD23C0806B00B4D08A /* AppCoordinator.swift */; };
+		F492F8C023C080A600B4D08A /* FlutterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8BF23C080A600B4D08A /* FlutterCoordinator.swift */; };
+		F492F8C823C0815E00B4D08A /* TrueEntropyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8C723C0815E00B4D08A /* TrueEntropyCoordinator.swift */; };
+		F49EEAD123C08D2B00928EFB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49EEAD023C08D2B00928EFB /* CoreMedia.framework */; };
+		F49EEAD323C08D3300928EFB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49EEAD223C08D3300928EFB /* CoreVideo.framework */; };
+		F49EEAD523C08D3900928EFB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49EEAD423C08D3900928EFB /* AVFoundation.framework */; };
+		F49EEAF723C202F300928EFB /* scale.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EEAD923C202F200928EFB /* scale.png */; };
+		F49EEAF823C202F300928EFB /* vault12.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EEADA23C202F200928EFB /* vault12.png */; };
+		F49EEAF923C202F300928EFB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F49EEADB23C202F200928EFB /* OpenSans-Light.ttf */; };
+		F49EEAFA23C202F300928EFB /* settings_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EEADC23C202F200928EFB /* settings_icon1.png */; };
+		F49EEAFB23C202F300928EFB /* settings_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EEADD23C202F200928EFB /* settings_icon2.png */; };
+		F49EEAFC23C202F300928EFB /* settings_icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EEADE23C202F200928EFB /* settings_icon3.png */; };
+		F49EEAFD23C202F300928EFB /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F49EEADF23C202F200928EFB /* OpenSans-ExtraBold.ttf */; };
+		F49EEAFE23C202F300928EFB /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EEAE023C202F200928EFB /* logo.png */; };
+		F49EEAFF23C202F300928EFB /* camera_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F49EEAE123C202F200928EFB /* camera_bg.jpg */; };
+		F49EEB0023C202F300928EFB /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F49EEAE223C202F200928EFB /* OpenSans-Regular.ttf */; };
+		F49EEB0123C202F300928EFB /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F49EEAE323C202F200928EFB /* bg.jpg */; };
+		F49EEB0723C202F300928EFB /* TrueEntropy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F49EEAE923C202F300928EFB /* TrueEntropy.xcdatamodeld */; };
+		F49EEB1223C205AC00928EFB /* TrueEntropyMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49EEB1023C205AB00928EFB /* TrueEntropyMain.storyboard */; };
+		F49EEB2323C205D600928EFB /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1323C205D500928EFB /* Extractor.swift */; };
+		F49EEB2423C205D600928EFB /* AdvancedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1423C205D500928EFB /* AdvancedController.swift */; };
+		F49EEB2523C205D600928EFB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1523C205D500928EFB /* SettingsController.swift */; };
+		F49EEB2623C205D600928EFB /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1623C205D500928EFB /* Frame.swift */; };
+		F49EEB2723C205D600928EFB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F49EEB1723C205D500928EFB /* LICENSE */; };
+		F49EEB2823C205D600928EFB /* CameraFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1823C205D500928EFB /* CameraFrames.swift */; };
+		F49EEB2923C205D600928EFB /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1923C205D500928EFB /* Sample.swift */; };
+		F49EEB2A23C205D600928EFB /* BuildPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1A23C205D500928EFB /* BuildPi.swift */; };
+		F49EEB2B23C205D600928EFB /* Collector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1B23C205D500928EFB /* Collector.swift */; };
+		F49EEB2C23C205D600928EFB /* TrueEntropy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1C23C205D500928EFB /* TrueEntropy.xcdatamodeld */; };
+		F49EEB2D23C205D600928EFB /* VonNeumannEnc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1E23C205D600928EFB /* VonNeumannEnc.swift */; };
+		F49EEB2E23C205D600928EFB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F49EEB1F23C205D600928EFB /* README.md */; };
+		F49EEB2F23C205D600928EFB /* GenerationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB2023C205D600928EFB /* GenerationController.swift */; };
+		F49EEB3023C205D600928EFB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB2123C205D600928EFB /* Constants.swift */; };
+		F49EEB3123C205D600928EFB /* OneBitExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB2223C205D600928EFB /* OneBitExtractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +90,41 @@
 		9C20672611CC58690BD68886 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		B482AD5A4B81CDB5B59D2F4E /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		CB2E5FBFA4996276451734D8 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F492F8BB23C0805D00B4D08A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F492F8BD23C0806B00B4D08A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		F492F8BF23C080A600B4D08A /* FlutterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterCoordinator.swift; sourceTree = "<group>"; };
+		F492F8C723C0815E00B4D08A /* TrueEntropyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrueEntropyCoordinator.swift; sourceTree = "<group>"; };
+		F49EEAD023C08D2B00928EFB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F49EEAD223C08D3300928EFB /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		F49EEAD423C08D3900928EFB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F49EEAD923C202F200928EFB /* scale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scale.png; sourceTree = "<group>"; };
+		F49EEADA23C202F200928EFB /* vault12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vault12.png; sourceTree = "<group>"; };
+		F49EEADB23C202F200928EFB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		F49EEADC23C202F200928EFB /* settings_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_icon1.png; sourceTree = "<group>"; };
+		F49EEADD23C202F200928EFB /* settings_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_icon2.png; sourceTree = "<group>"; };
+		F49EEADE23C202F200928EFB /* settings_icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_icon3.png; sourceTree = "<group>"; };
+		F49EEADF23C202F200928EFB /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		F49EEAE023C202F200928EFB /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		F49EEAE123C202F200928EFB /* camera_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = camera_bg.jpg; sourceTree = "<group>"; };
+		F49EEAE223C202F200928EFB /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		F49EEAE323C202F200928EFB /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		F49EEAEA23C202F300928EFB /* TrueEntropy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrueEntropy.xcdatamodel; sourceTree = "<group>"; };
+		F49EEB1123C205AB00928EFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TrueEntropyMain.storyboard; sourceTree = "<group>"; };
+		F49EEB1323C205D500928EFB /* Extractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
+		F49EEB1423C205D500928EFB /* AdvancedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedController.swift; sourceTree = "<group>"; };
+		F49EEB1523C205D500928EFB /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		F49EEB1623C205D500928EFB /* Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
+		F49EEB1723C205D500928EFB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		F49EEB1823C205D500928EFB /* CameraFrames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFrames.swift; sourceTree = "<group>"; };
+		F49EEB1923C205D500928EFB /* Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
+		F49EEB1A23C205D500928EFB /* BuildPi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildPi.swift; sourceTree = "<group>"; };
+		F49EEB1B23C205D500928EFB /* Collector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collector.swift; sourceTree = "<group>"; };
+		F49EEB1D23C205D500928EFB /* TrueEntropy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrueEntropy.xcdatamodel; sourceTree = "<group>"; };
+		F49EEB1E23C205D600928EFB /* VonNeumannEnc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VonNeumannEnc.swift; sourceTree = "<group>"; };
+		F49EEB1F23C205D600928EFB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F49EEB2023C205D600928EFB /* GenerationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerationController.swift; sourceTree = "<group>"; };
+		F49EEB2123C205D600928EFB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F49EEB2223C205D600928EFB /* OneBitExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneBitExtractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +132,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F49EEAD523C08D3900928EFB /* AVFoundation.framework in Frameworks */,
+				F49EEAD323C08D3300928EFB /* CoreVideo.framework in Frameworks */,
+				F49EEAD123C08D2B00928EFB /* CoreMedia.framework in Frameworks */,
 				9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */,
 				3B80C3941E831B6300D905FE /* App.framework in Frameworks */,
 				BD6A222B9F5A3FDB65BBFFA0 /* Pods_Runner.framework in Frameworks */,
@@ -116,14 +189,15 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
-				97C146FA1CF9000F007C117D /* Main.storyboard */,
+				F492F8B723C07FD700B4D08A /* App */,
+				F492F8BA23C0800F00B4D08A /* Flutter */,
+				F492F8C523C0813600B4D08A /* TrueEntropy */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
 				97C147021CF9000F007C117D /* Info.plist */,
 				97C146F11CF9000F007C117D /* Supporting Files */,
 				1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */,
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
-				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 			);
 			path = Runner;
@@ -139,9 +213,75 @@
 		E72C119F0FCFB146E9E14BAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F49EEAD423C08D3900928EFB /* AVFoundation.framework */,
+				F49EEAD223C08D3300928EFB /* CoreVideo.framework */,
+				F49EEAD023C08D2B00928EFB /* CoreMedia.framework */,
 				CB2E5FBFA4996276451734D8 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F492F8B723C07FD700B4D08A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
+				F492F8BB23C0805D00B4D08A /* Coordinator.swift */,
+				F492F8BD23C0806B00B4D08A /* AppCoordinator.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F492F8BA23C0800F00B4D08A /* Flutter */ = {
+			isa = PBXGroup;
+			children = (
+				97C146FA1CF9000F007C117D /* Main.storyboard */,
+				F492F8BF23C080A600B4D08A /* FlutterCoordinator.swift */,
+			);
+			path = Flutter;
+			sourceTree = "<group>";
+		};
+		F492F8C523C0813600B4D08A /* TrueEntropy */ = {
+			isa = PBXGroup;
+			children = (
+				F49EEB1423C205D500928EFB /* AdvancedController.swift */,
+				F49EEB1A23C205D500928EFB /* BuildPi.swift */,
+				F49EEB1823C205D500928EFB /* CameraFrames.swift */,
+				F49EEB1B23C205D500928EFB /* Collector.swift */,
+				F49EEB2123C205D600928EFB /* Constants.swift */,
+				F49EEB1323C205D500928EFB /* Extractor.swift */,
+				F49EEB1623C205D500928EFB /* Frame.swift */,
+				F49EEB2023C205D600928EFB /* GenerationController.swift */,
+				F49EEB1723C205D500928EFB /* LICENSE */,
+				F49EEB2223C205D600928EFB /* OneBitExtractor.swift */,
+				F49EEB1F23C205D600928EFB /* README.md */,
+				F49EEAD823C202F200928EFB /* Resources */,
+				F49EEB1923C205D500928EFB /* Sample.swift */,
+				F49EEB1523C205D500928EFB /* SettingsController.swift */,
+				F49EEB1C23C205D500928EFB /* TrueEntropy.xcdatamodeld */,
+				F49EEB1023C205AB00928EFB /* TrueEntropyMain.storyboard */,
+				F49EEAE923C202F300928EFB /* TrueEntropy.xcdatamodeld */,
+				F492F8C723C0815E00B4D08A /* TrueEntropyCoordinator.swift */,
+				F49EEB1E23C205D600928EFB /* VonNeumannEnc.swift */,
+			);
+			path = TrueEntropy;
+			sourceTree = "<group>";
+		};
+		F49EEAD823C202F200928EFB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F49EEAD923C202F200928EFB /* scale.png */,
+				F49EEADA23C202F200928EFB /* vault12.png */,
+				F49EEADB23C202F200928EFB /* OpenSans-Light.ttf */,
+				F49EEADC23C202F200928EFB /* settings_icon1.png */,
+				F49EEADD23C202F200928EFB /* settings_icon2.png */,
+				F49EEADE23C202F200928EFB /* settings_icon3.png */,
+				F49EEADF23C202F200928EFB /* OpenSans-ExtraBold.ttf */,
+				F49EEAE023C202F200928EFB /* logo.png */,
+				F49EEAE123C202F200928EFB /* camera_bg.jpg */,
+				F49EEAE223C202F200928EFB /* OpenSans-Regular.ttf */,
+				F49EEAE323C202F200928EFB /* bg.jpg */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,8 +348,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F49EEAFE23C202F300928EFB /* logo.png in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
+				F49EEAFB23C202F300928EFB /* settings_icon2.png in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
+				F49EEAFA23C202F300928EFB /* settings_icon1.png in Resources */,
+				F49EEAF823C202F300928EFB /* vault12.png in Resources */,
+				F49EEB2E23C205D600928EFB /* README.md in Resources */,
+				F49EEB0023C202F300928EFB /* OpenSans-Regular.ttf in Resources */,
+				F49EEB1223C205AC00928EFB /* TrueEntropyMain.storyboard in Resources */,
+				F49EEB2723C205D600928EFB /* LICENSE in Resources */,
+				F49EEAF723C202F300928EFB /* scale.png in Resources */,
+				F49EEAF923C202F300928EFB /* OpenSans-Light.ttf in Resources */,
+				F49EEAFD23C202F300928EFB /* OpenSans-ExtraBold.ttf in Resources */,
+				F49EEAFF23C202F300928EFB /* camera_bg.jpg in Resources */,
+				F49EEB0123C202F300928EFB /* bg.jpg in Resources */,
+				F49EEAFC23C202F300928EFB /* settings_icon3.png in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 			);
@@ -290,8 +444,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F492F8C823C0815E00B4D08A /* TrueEntropyCoordinator.swift in Sources */,
+				F49EEB3023C205D600928EFB /* Constants.swift in Sources */,
+				F49EEB2C23C205D600928EFB /* TrueEntropy.xcdatamodeld in Sources */,
+				F492F8BE23C0806B00B4D08A /* AppCoordinator.swift in Sources */,
+				F492F8C023C080A600B4D08A /* FlutterCoordinator.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				F492F8BC23C0805D00B4D08A /* Coordinator.swift in Sources */,
+				F49EEB2F23C205D600928EFB /* GenerationController.swift in Sources */,
+				F49EEB2523C205D600928EFB /* SettingsController.swift in Sources */,
+				F49EEB2D23C205D600928EFB /* VonNeumannEnc.swift in Sources */,
+				F49EEB2323C205D600928EFB /* Extractor.swift in Sources */,
+				F49EEB2823C205D600928EFB /* CameraFrames.swift in Sources */,
+				F49EEB2A23C205D600928EFB /* BuildPi.swift in Sources */,
+				F49EEB2423C205D600928EFB /* AdvancedController.swift in Sources */,
+				F49EEB2B23C205D600928EFB /* Collector.swift in Sources */,
+				F49EEB0723C202F300928EFB /* TrueEntropy.xcdatamodeld in Sources */,
+				F49EEB3123C205D600928EFB /* OneBitExtractor.swift in Sources */,
+				F49EEB2923C205D600928EFB /* Sample.swift in Sources */,
+				F49EEB2623C205D600928EFB /* Frame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +484,14 @@
 				97C147001CF9000F007C117D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F49EEB1023C205AB00928EFB /* TrueEntropyMain.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F49EEB1123C205AB00928EFB /* Base */,
+			);
+			name = TrueEntropyMain.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -382,6 +562,7 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -517,6 +698,7 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -545,6 +727,7 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -582,6 +765,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F49EEAE923C202F300928EFB /* TrueEntropy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F49EEAEA23C202F300928EFB /* TrueEntropy.xcdatamodel */,
+			);
+			currentVersion = F49EEAEA23C202F300928EFB /* TrueEntropy.xcdatamodel */;
+			path = TrueEntropy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		F49EEB1C23C205D500928EFB /* TrueEntropy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F49EEB1D23C205D500928EFB /* TrueEntropy.xcdatamodel */,
+			);
+			currentVersion = F49EEB1D23C205D500928EFB /* TrueEntropy.xcdatamodel */;
+			path = TrueEntropy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 97C146E61CF9000F007C117D /* Project object */;
 }
