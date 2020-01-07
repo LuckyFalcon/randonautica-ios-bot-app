@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -33,14 +34,18 @@ class BotWebView extends StatelessWidget {
     }
   }
 
+  _launchURL(String url) async {
+      await launch(url);
+  }
+
   BotWebView();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Randonautica"),
-        ),
+//        appBar: AppBar(
+//          title: Text("Randonautica"),
+//        ),
         body: WebView(
           initialUrl: "https://devbot.randonauts.com/devbot.html?src=ios",
           javascriptMode: JavascriptMode.unrestricted,
@@ -48,7 +53,6 @@ class BotWebView extends StatelessWidget {
             JavascriptChannel(
                 name: 'flutterChannel_loadCamRNGWithBytesNeeded',
                 onMessageReceived: (JavascriptMessage message) {
-                  //print(message.message);
                   platform.setMethodCallHandler(_handleMethod); // for gid callback
                   _navToCamRNG(int.parse(message.message)); // open swift TrueEntropy Camera RNG view
                 }),
@@ -58,6 +62,13 @@ class BotWebView extends StatelessWidget {
             webView = webViewController;
             _controller.complete(webViewController);
           },
+          navigationDelegate: (NavigationRequest request) {
+            if (!request.url.startsWith('https://devbot.randonauts.com/devbot.html')) {
+              _launchURL(request.url);
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          }
         ));
   }
 }

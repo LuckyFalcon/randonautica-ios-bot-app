@@ -25,8 +25,9 @@ dependencies:
   cupertino_icons: ^0.1.2
 
   # for the Bot
-  webview_flutter: ^0.3.14+1
+  webview_flutter: ^0.3.19+2
   geolocator: ^5.1.5
+  url_launcher: any
 
 dev_dependencies:
   flutter_test:
