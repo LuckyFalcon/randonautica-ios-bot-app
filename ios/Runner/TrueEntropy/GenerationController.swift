@@ -200,7 +200,7 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
                           "entropy": entropy.map { String(format: "%02x", $0) }.joined()
                 ] as Dictionary<String, AnyObject>
             
-            var request = URLRequest(url: URL(string: "https://devapi.randonauts.com/setentropy")!)
+            var request = URLRequest(url: URL(string: "https://api.randonauts.com/setentropy")!)
             request.httpMethod = "POST"
             request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
