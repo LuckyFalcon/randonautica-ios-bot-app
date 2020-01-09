@@ -28,6 +28,7 @@ dependencies:
   webview_flutter: ^0.3.19+2
   geolocator: ^5.1.5
   url_launcher: any
+  onesignal_flutter: ^2.0.0
 
 dev_dependencies:
   flutter_test:

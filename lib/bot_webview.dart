@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
+
 
 // camrng
 import 'package:flutter/services.dart';
@@ -38,22 +39,35 @@ class BotWebView extends StatelessWidget {
       await launch(url);
   }
 
+  _initOneSignal() async {
+    OneSignal.shared.init(
+        "da21a078-babf-4e22-a032-0ea22de561a7",
+        iOSSettings: {
+          OSiOSSettings.autoPrompt: true,
+          OSiOSSettings.inAppLaunchUrl: true
+        }
+    );
+    OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
+    var status = await OneSignal.shared.getPermissionSubscriptionState();
+    webView.evaluateJavascript('sendPushIdToBot("${status.subscriptionStatus.userId}");');
+  }
+
   BotWebView();
 
   @override
   Widget build(BuildContext context) {
+    platform.setMethodCallHandler(_handleMethod); // for handling javascript->flutter callbacks
     return Scaffold(
 //        appBar: AppBar(
 //          title: Text("Randonautica"),
 //        ),
         body: WebView(
-          initialUrl: "https://devbot.randonauts.com/devbot.html?src=ios",
+          initialUrl: "https://bot.randonauts.com/index.html?src=ios",
           javascriptMode: JavascriptMode.unrestricted,
           javascriptChannels: Set.from([
             JavascriptChannel(
                 name: 'flutterChannel_loadCamRNGWithBytesNeeded',
                 onMessageReceived: (JavascriptMessage message) {
-                  platform.setMethodCallHandler(_handleMethod); // for gid callback
                   _navToCamRNG(int.parse(message.message)); // open swift TrueEntropy Camera RNG view
                 }),
             // we can have more than one channels
@@ -62,8 +76,13 @@ class BotWebView extends StatelessWidget {
             webView = webViewController;
             _controller.complete(webViewController);
           },
+          onPageFinished: (String page) {
+            if (page.contains("index.html")){
+              _initOneSignal();
+            }
+          },
           navigationDelegate: (NavigationRequest request) {
-            if (!request.url.startsWith('https://devbot.randonauts.com/devbot.html')) {
+            if (!request.url.startsWith('https://bot.randonauts.com/index.html')) {
               _launchURL(request.url);
               return NavigationDecision.prevent;
             }
