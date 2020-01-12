@@ -41,7 +41,7 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
         
         // as we bypass the SettingsController and load this GenerationController
         // directly from flutter, we set our default values here (soliax)
-        defaults.set(3, forKey: "speed")
+        defaults.set(2, forKey: "speed")
         defaults.set("libwrapper", forKey: "delivery")
         defaults.set(false, forKey: "upload_csv")
         defaults.set(bytesNeeded, forKey: "block_size")
