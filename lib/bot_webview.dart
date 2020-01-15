@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 
 
 // camrng
@@ -52,17 +54,31 @@ class BotWebView extends StatelessWidget {
     webView.evaluateJavascript('sendPushIdToBot("${status.subscriptionStatus.userId}");');
   }
 
+  _initLocationPermissions() async {
+    GeolocationStatus geolocationStatus = await Geolocator().checkGeolocationPermissionStatus();
+    print("location permission granted? ${geolocationStatus.value}");
+  }
+
   BotWebView();
 
   @override
   Widget build(BuildContext context) {
+    var botUrl = "";
+    if (Platform.isAndroid) {
+      botUrl = "https://devbot.randonauts.com/devbot.html?src=android";
+
+      _initLocationPermissions();
+    } else if (Platform.isIOS) {
+      botUrl = "https://bot.randonauts.com/index.html?src=ios";
+    }
+
     platform.setMethodCallHandler(_handleMethod); // for handling javascript->flutter callbacks
     return Scaffold(
 //        appBar: AppBar(
 //          title: Text("Randonautica"),
 //        ),
         body: WebView(
-          initialUrl: "https://bot.randonauts.com/index.html?src=ios",
+          initialUrl: botUrl,
           javascriptMode: JavascriptMode.unrestricted,
           javascriptChannels: Set.from([
             JavascriptChannel(
@@ -82,7 +98,7 @@ class BotWebView extends StatelessWidget {
             }
           },
           navigationDelegate: (NavigationRequest request) {
-            if (!request.url.startsWith('https://bot.randonauts.com/index.html')) {
+            if (!request.url.startsWith(botUrl)) {
               _launchURL(request.url);
               return NavigationDecision.prevent;
             }
