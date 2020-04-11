@@ -22,16 +22,16 @@ import CoreData
         mainCoordinator = AppCoordinator(navigationController: navigationController)
         window?.makeKeyAndVisible()
         
-        // channel for flutter to call camrng (TrueEntropy)
-        let camrngChannel = FlutterMethodChannel(name: "com.randonautica.app", binaryMessenger: flutterViewController.binaryMessenger)
-        camrngChannel.setMethodCallHandler({(call: FlutterMethodCall, result:   FlutterResult) -> Void in
-            guard call.method == "goToTrueEntropy" else {
+        // channel for flutter to call (TrueEntropy)
+        let channel = FlutterMethodChannel(name: "com.randonautica.app", binaryMessenger: flutterViewController.binaryMessenger)
+        channel.setMethodCallHandler({(call: FlutterMethodCall, result:   FlutterResult) -> Void in
+            guard call.method == "goToTrueEntropy" || call.method == "goToTemporal" else {
                 result(FlutterMethodNotImplemented)
                 return
             }
             self.mainCoordinator?.start()
             let bytesNeeded = call.arguments as! Int
-            self.mainCoordinator?.navigateToTrueEntropyViewController(bytesNeeded: bytesNeeded, channel: camrngChannel)
+            self.mainCoordinator?.navigateToTrueEntropyViewController(bytesNeeded: bytesNeeded, rngType: call.method, channel: channel)
         })
         
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)

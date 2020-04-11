@@ -19,12 +19,13 @@ final class TrueEntropyCoordinator: BaseCoordinator{
         super.start()
     }
     
-    func openView(bytesNeeded: Int, channel: FlutterMethodChannel)
+    func openView(bytesNeeded: Int, rngType: String, channel: FlutterMethodChannel)
     {
         let storyboard = UIStoryboard(name: "TrueEntropyMain", bundle: nil)
         if let container = storyboard.instantiateViewController(withIdentifier: "GenerationController") as? GenerationController {
             container.coordinatorDelegate = self
             container.bytesNeeded = bytesNeeded
+            container.rngType = rngType
             container.channel = channel
             navigationController?.pushViewController(container, animated: true)
         }

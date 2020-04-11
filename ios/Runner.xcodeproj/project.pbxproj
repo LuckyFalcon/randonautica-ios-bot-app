@@ -25,6 +25,8 @@
 		F492F8BE23C0806B00B4D08A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8BD23C0806B00B4D08A /* AppCoordinator.swift */; };
 		F492F8C023C080A600B4D08A /* FlutterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8BF23C080A600B4D08A /* FlutterCoordinator.swift */; };
 		F492F8C823C0815E00B4D08A /* TrueEntropyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8C723C0815E00B4D08A /* TrueEntropyCoordinator.swift */; };
+		F494215D244049E7005697FD /* libtemporal_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F494215C244049E7005697FD /* libtemporal_ios.a */; };
+		F494216324404D70005697FD /* SteveLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F494216124404D70005697FD /* SteveLib.cpp */; };
 		F49EEAD123C08D2B00928EFB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49EEAD023C08D2B00928EFB /* CoreMedia.framework */; };
 		F49EEAD323C08D3300928EFB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49EEAD223C08D3300928EFB /* CoreVideo.framework */; };
 		F49EEAD523C08D3900928EFB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49EEAD423C08D3900928EFB /* AVFoundation.framework */; };
@@ -125,6 +127,10 @@
 		F492F8BD23C0806B00B4D08A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F492F8BF23C080A600B4D08A /* FlutterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterCoordinator.swift; sourceTree = "<group>"; };
 		F492F8C723C0815E00B4D08A /* TrueEntropyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrueEntropyCoordinator.swift; sourceTree = "<group>"; };
+		F494215C244049E7005697FD /* libtemporal_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtemporal_ios.a; sourceTree = "<group>"; };
+		F494215E24404AC3005697FD /* TemporalLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemporalLib.h; sourceTree = "<group>"; };
+		F494216124404D70005697FD /* SteveLib.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveLib.cpp; sourceTree = "<group>"; };
+		F494216224404D70005697FD /* SteveLib.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveLib.hpp; sourceTree = "<group>"; };
 		F49EEAD023C08D2B00928EFB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F49EEAD223C08D3300928EFB /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F49EEAD423C08D3900928EFB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -169,6 +175,7 @@
 				F49EEAD323C08D3300928EFB /* CoreVideo.framework in Frameworks */,
 				F49EEAD123C08D2B00928EFB /* CoreMedia.framework in Frameworks */,
 				9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */,
+				F494215D244049E7005697FD /* libtemporal_ios.a in Frameworks */,
 				3B80C3941E831B6300D905FE /* App.framework in Frameworks */,
 				BD6A222B9F5A3FDB65BBFFA0 /* Pods_Runner.framework in Frameworks */,
 			);
@@ -238,6 +245,7 @@
 				F4AD0B7723C5673D006EAF38 /* Randonautica.entitlements */,
 				F492F8B723C07FD700B4D08A /* App */,
 				F492F8BA23C0800F00B4D08A /* Flutter */,
+				F494215B244049C5005697FD /* SteveLib */,
 				F492F8C523C0813600B4D08A /* TrueEntropy */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
@@ -322,6 +330,17 @@
 				F49EEB1E23C205D600928EFB /* VonNeumannEnc.swift */,
 			);
 			path = TrueEntropy;
+			sourceTree = "<group>";
+		};
+		F494215B244049C5005697FD /* SteveLib */ = {
+			isa = PBXGroup;
+			children = (
+				F494215E24404AC3005697FD /* TemporalLib.h */,
+				F494215C244049E7005697FD /* libtemporal_ios.a */,
+				F494216124404D70005697FD /* SteveLib.cpp */,
+				F494216224404D70005697FD /* SteveLib.hpp */,
+			);
+			path = SteveLib;
 			sourceTree = "<group>";
 		};
 		F49EEAD823C202F200928EFB /* Resources */ = {
@@ -527,7 +546,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
 		EFC6CCFFEC13A36968C555FC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -569,6 +588,7 @@
 				F49EEB2F23C205D600928EFB /* GenerationController.swift in Sources */,
 				F49EEB2523C205D600928EFB /* SettingsController.swift in Sources */,
 				F49EEB2D23C205D600928EFB /* VonNeumannEnc.swift in Sources */,
+				F494216324404D70005697FD /* SteveLib.cpp in Sources */,
 				F49EEB2323C205D600928EFB /* Extractor.swift in Sources */,
 				F49EEB2823C205D600928EFB /* CameraFrames.swift in Sources */,
 				F49EEB2A23C205D600928EFB /* BuildPi.swift in Sources */,
@@ -684,9 +704,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Randonautica.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -699,12 +720,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/Runner/SteveLib",
 				);
-				MARKETING_VERSION = 4.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app;
 				PRODUCT_NAME = Randonautica;
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				VALID_ARCHS = "arm64 arm64e";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Profile;
@@ -823,9 +846,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Randonautica.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -838,13 +862,15 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/Runner/SteveLib",
 				);
-				MARKETING_VERSION = 4.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app;
 				PRODUCT_NAME = Randonautica;
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				VALID_ARCHS = "arm64 arm64e";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -855,9 +881,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Randonautica.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -870,12 +897,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/Runner/SteveLib",
 				);
-				MARKETING_VERSION = 4.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app;
 				PRODUCT_NAME = Randonautica;
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				VALID_ARCHS = "arm64 arm64e";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

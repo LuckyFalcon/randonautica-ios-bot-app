@@ -28,7 +28,7 @@ protocol TrueEntropyToAppCoordinatorDelegate: class {
 }
 
 protocol FlutterToAppCoordinatorDelegate: class {
-    func navigateToTrueEntropyViewController(bytesNeeded: Int, channel: FlutterMethodChannel )
+    func navigateToTrueEntropyViewController(bytesNeeded: Int, rngType: String, channel: FlutterMethodChannel )
 }
 
 extension AppCoordinator: TrueEntropyToAppCoordinatorDelegate{
@@ -41,11 +41,11 @@ extension AppCoordinator: TrueEntropyToAppCoordinatorDelegate{
 }
 
 extension AppCoordinator: FlutterToAppCoordinatorDelegate{
-    func navigateToTrueEntropyViewController(bytesNeeded: Int, channel: FlutterMethodChannel) {
+    func navigateToTrueEntropyViewController(bytesNeeded: Int, rngType: String, channel: FlutterMethodChannel) {
         let coordinator = TrueEntropyCoordinator(navigationController:    self.navigationController)
         coordinator.delegate = self
-        self.add(coordinator)
+        self.add(coordinator) 
         coordinator.start()
-        coordinator.openView(bytesNeeded: bytesNeeded, channel: channel)
+        coordinator.openView(bytesNeeded: bytesNeeded, rngType: rngType, channel: channel)
     }
 }

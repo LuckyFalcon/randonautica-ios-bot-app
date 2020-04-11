@@ -24,7 +24,7 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
     @IBOutlet weak var overlayStatus: UILabel!
     @IBOutlet weak var settingsTable: UITableView!
     
-    let stats = ["TIME ELAPSED",
+    var stats = ["TIME ELAPSED",
                  "BYTES IN BUFFER",
                  "ENTROPY GENERATED",
                  "χ² OF LAST BLOCK",
@@ -34,6 +34,7 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
     // for loading TrueEntropy view (soliax) (https://medium.com/@cosinus84/flutter-view-controller-used-in-ios-app-using-coordinator-pattern-8896339d64ba)
     var coordinatorDelegate: TrueEntropyCoordinatorDelegate?
     var bytesNeeded: Int = 0
+    var rngType: String = ""
     var channel: FlutterMethodChannel?
     
     override func viewDidLoad() {
@@ -55,10 +56,6 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
         // app should stay always active when entropy generation started
         UIApplication.shared.isIdleTimerDisabled = true
         
-        settingsTable.dataSource = self
-        settingsTable.delegate = self
-        settingsTable.tableFooterView = UIView()
-        
         cameraRadius = (self.view!.layer.bounds.width - 20) / 2
         cameraCenterY = (self.view!.layer.bounds.height - 250) / 2 - cameraRadius
         
@@ -66,6 +63,45 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
         if UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 2436 {
             cameraCenterY -= 16
         }
+        
+        // 2020-04-10 insertion hack by soliax
+        // quick repurposing this UI and upload code to use SteveLib (libTemporal) instead of CamRNG
+        if (rngType == "goToTemporal") {
+            // remove all the CamRNG stats from the table except the timer
+            stats = ["TIME ELAPSED"]
+            settingsTable.dataSource = self
+            settingsTable.delegate = self
+            settingsTable.tableFooterView = UIView()
+            
+            timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(timerForSteveAction), userInfo: nil, repeats: true)
+            
+            // Rotating image on center
+            let animation = CABasicAnimation(keyPath: "transform.rotation")
+            animation.fromValue = 0
+            animation.toValue = CGFloat.pi * 2
+            animation.duration = Constants.spinnerAnimationDuration
+            animation.repeatCount = .infinity
+            animation.isRemovedOnCompletion = false
+            overlay.layer.add(animation, forKey: "spinAnimation")
+            
+            // summon Steve to generate magical entropy (on a background thread to not freeze the UI)
+            let concurrentQueue = DispatchQueue.init(label: "concurrentQueue", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil)
+            concurrentQueue.async {
+                let steveBytes: UnsafeMutablePointer<UInt8> = hitBooks(Int32(self.bytesNeeded))
+
+                // upload entropy to the libwrapper API server
+                let bufferPtr = UnsafeMutableBufferPointer(start: steveBytes, count: self.bytesNeeded)
+                let buffer = Array(bufferPtr)
+                self.postEntropyToLibwrapper(entropy: buffer)
+                free(steveBytes)
+            }
+            
+            return
+        }
+        
+        settingsTable.dataSource = self
+        settingsTable.delegate = self
+        settingsTable.tableFooterView = UIView()
         
         addCameraLayer()
         
@@ -116,6 +152,20 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
     
     func localized(_ val: Int) -> String {
         return NumberFormatter.localizedString(from: NSNumber(value: val), number: NumberFormatter.Style.decimal)
+    }
+    
+    @objc func timerForSteveAction() {
+        ticker += 1
+        
+        // Text animation
+        let animation: CATransition = CATransition()
+        animation.duration = 0.1
+        animation.type = CATransitionType.fade
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        settingsTable.cellForRow(at: IndexPath(row: 0, section: 0))?.layer.add(animation, forKey: "changeTextTransition")
+        
+        // Row 0: Time elapsed
+        updateValue(row: 0, val: String(format: "%02i:%02i", ticker / 5 / 60, ticker / 5 % 60))
     }
     
     @objc func timerAction() {
@@ -173,6 +223,52 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
         return string
     }
     
+    // set the entropy in the libwrapper api server
+    func postEntropyToLibwrapper(entropy: [UInt8]) {
+        let timestamp = Int64(NSDate().timeIntervalSince1970)
+
+        let params = ["size": entropy.count * 2,
+                      "raw": "true",
+                      "timestamp": timestamp * 1000,
+                      "entropy": entropy.map { String(format: "%02x", $0) }.joined()
+            ] as Dictionary<String, AnyObject>
+        
+        var request = URLRequest(url: URL(string: "https://api.randonauts.com/setentropy")!)
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            
+            if error != nil {
+                print(error!)
+            } else {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                    print(json)
+                    print("uploaded entropy to libwrapper API")
+                    
+                    DispatchQueue.main.async {
+                        // send gid back to flutter to send to bot via javascript layer
+                        self.channel?.invokeMethod("gid", arguments: json["Gid"])
+                        
+                        // go back to flutter
+                        self.coordinatorDelegate?.navigateToFlutter()
+                    }
+                } catch {
+                    if let returnData = String(data: data!, encoding: .utf8) {
+                        print(returnData)
+                    } else {
+                        print("invalid response")
+                    }
+                }
+            }
+        })
+        
+        task.resume()
+    }
+    
     func uploadEntropy(entropy: [UInt8], blockNumber: Int) {
         // soliax - was crashing here trying to call main UI thread from background thread
         //print(self.bytesConvertToHexstring(byte: entropy))
@@ -194,47 +290,7 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
         
         // upload generated entropy to libwrapper API (soliax)
         if defaults.string(forKey: "delivery") == "libwrapper" {
-            let params = ["size": entropy.count * 2,
-                          "raw": "true",
-                          "timestamp": timestamp * 1000,
-                          "entropy": entropy.map { String(format: "%02x", $0) }.joined()
-                ] as Dictionary<String, AnyObject>
-            
-            var request = URLRequest(url: URL(string: "https://api.randonauts.com/setentropy")!)
-            request.httpMethod = "POST"
-            request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            let session = URLSession.shared
-            let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                
-                if error != nil {
-                    print(error!)
-                } else {
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                        print(json)
-                        print("uploaded entropy to libwrapper API")
-                        
-                        DispatchQueue.main.async {
-                            // send gid back to flutter to send to bot via javascript layer
-                            self.channel?.invokeMethod("gid", arguments: json["Gid"])
-                            
-                            // go back to flutter
-                            self.coordinatorDelegate?.navigateToFlutter()
-                        }
-                    } catch {
-                        if let returnData = String(data: data!, encoding: .utf8) {
-                            print(returnData)
-                        } else {
-                            print("invalid response")
-                        }
-                    }
-                }
-            })
-            
-            task.resume()
-            
+            postEntropyToLibwrapper(entropy: entropy)
             return
         }
         
