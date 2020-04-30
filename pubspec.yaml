@@ -24,6 +24,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+  # for the introduction screen
+  introduction_screen: ^1.0.7
+
+  # for storing coordinates
+  latlong: ^0.6.1
+
+  # for the api
+  http: ^0.12.0+4
+
   # for the Bot
   webview_flutter: ^0.3.19+2
   geolocator: ^5.1.5
@@ -45,6 +54,24 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/img1.jpg
+    - assets/img/ic_distance.png
+    - assets/img/ic_gravity.png
+    - assets/owlbackground.png
+    - assets/owlbackgroundtest.png
+    - assets/img2.jpg
+    - assets/img3.jpg
+    - assets/Rand1.png
+    - assets/test.png
+    - assets/Rand2.png
+    - assets/Rand3.png
+    - assets/reacticon.png
+    - assets/reacticon128.png
+    - assets/navigate.jpg
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
