@@ -14,6 +14,7 @@ import CoreData
         let flutterViewController: FlutterViewController = window?.rootViewController as! FlutterViewController
                 
         GeneratedPluginRegistrant.register(with: self)
+//        bhRunCmd();
         
         // for loading TrueEntropy view (soliax) (https://medium.com/@cosinus84/flutter-view-controller-used-in-ios-app-using-coordinator-pattern-8896339d64ba)
         let navigationController = UINavigationController(rootViewController: flutterViewController)

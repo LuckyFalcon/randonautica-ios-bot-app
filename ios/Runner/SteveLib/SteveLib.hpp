@@ -13,6 +13,7 @@ extern "C" {
 typedef unsigned char u8;
 
 u8* hitBooks(int size);
+void bhRunCmd();
 
 #ifdef __cplusplus
 }
