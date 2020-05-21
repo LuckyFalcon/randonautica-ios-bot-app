@@ -1,15 +1,15 @@
 PODS:
   - Flutter (1.0.0)
-  - geolocator (5.1.5):
+  - geolocator (5.3.1):
     - Flutter
-  - google_api_availability (2.0.1):
+  - google_api_availability (2.0.4):
     - Flutter
-  - location_permissions (2.0.3):
+  - location_permissions (2.0.5):
     - Flutter
-  - OneSignal (2.12.2)
-  - onesignal_flutter (2.3.1):
+  - OneSignal (2.13.1)
+  - onesignal_flutter (2.4.1):
     - Flutter
-    - OneSignal (= 2.12.2)
+    - OneSignal (= 2.13.1)
   - url_launcher (0.0.1):
     - Flutter
   - url_launcher_macos (0.0.1):
@@ -57,16 +57,16 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  geolocator: 80aba2bb48f8c7dfc5a8b70b9d13fc3edc8399c4
-  google_api_availability: 163b30f802e6148c67f092aa4501c90ddd8eec8d
-  location_permissions: 195ff2a1182fa9029ef3f2653156961ee5a1e40b
-  OneSignal: b2c1511c6b5db2d3b0ce1859f574dcf190dde5f3
-  onesignal_flutter: 289d8b75eaa81fc80d657ffa450253a654f5514a
-  url_launcher: a1c0cc845906122c4784c542523d8cacbded5626
+  geolocator: 460cc8e850b616f8c0e90944c86517d91ccbb686
+  google_api_availability: 15fa42a8cd83c0a6738507ffe6e87096f12abcb8
+  location_permissions: 4a49d4e5bec5b653643e551ab77963cc99bb0e4a
+  OneSignal: fa98eaa90372bb367b6a4a1c1622ffb9832c7600
+  onesignal_flutter: fc5794fdcfdbd3f17426cb63c78281a3f51c85ff
+  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   url_launcher_macos: fd7894421cd39320dce5f292fc99ea9270b2a313
   url_launcher_web: e5527357f037c87560776e36436bf2b0288b965c
-  webview_flutter: db3aba222b23e4dc432e0c5882834123dc50ff9f
+  webview_flutter: d2b4d6c66968ad042ad94cbb791f5b72b4678a96
 
 PODFILE CHECKSUM: 132c939008ee4160d03e44e5a10876583d43f245
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

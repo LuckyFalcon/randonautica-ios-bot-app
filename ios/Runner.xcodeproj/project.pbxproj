@@ -9,23 +9,22 @@
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
-		3B80C3941E831B6300D905FE /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; };
-		3B80C3951E831B6300D905FE /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
-		9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; };
-		9705A1C71CF904A300538489 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		BD6A222B9F5A3FDB65BBFFA0 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E5FBFA4996276451734D8 /* Pods_Runner.framework */; };
 		E3DA18E12F134D9D10E0A7A8 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F10595C0EA3AFBE3D3D205 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		F40300822475FA6200371740 /* liblib_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F40300802475FA6100371740 /* liblib_ios.a */; };
+		F40300832475FA6200371740 /* libgenerators_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F40300812475FA6200371740 /* libgenerators_ios.a */; };
+		F40300842475FB3B00371740 /* liblib_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F40300802475FA6100371740 /* liblib_ios.a */; };
+		F40300852475FB3E00371740 /* libgenerators_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F40300812475FA6200371740 /* libgenerators_ios.a */; };
 		F449788C23C56210009D0C97 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449788B23C56210009D0C97 /* NotificationService.swift */; };
 		F449789023C56210009D0C97 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F449788923C56210009D0C97 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F492F8BC23C0805D00B4D08A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8BB23C0805D00B4D08A /* Coordinator.swift */; };
 		F492F8BE23C0806B00B4D08A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8BD23C0806B00B4D08A /* AppCoordinator.swift */; };
 		F492F8C023C080A600B4D08A /* FlutterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8BF23C080A600B4D08A /* FlutterCoordinator.swift */; };
 		F492F8C823C0815E00B4D08A /* TrueEntropyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8C723C0815E00B4D08A /* TrueEntropyCoordinator.swift */; };
-		F494215D244049E7005697FD /* libtemporal_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F494215C244049E7005697FD /* libtemporal_ios.a */; };
 		F494216324404D70005697FD /* SteveLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F494216124404D70005697FD /* SteveLib.cpp */; };
 		F49EEAD123C08D2B00928EFB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49EEAD023C08D2B00928EFB /* CoreMedia.framework */; };
 		F49EEAD323C08D3300928EFB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49EEAD223C08D3300928EFB /* CoreVideo.framework */; };
@@ -77,8 +76,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B80C3951E831B6300D905FE /* App.framework in Embed Frameworks */,
-				9705A1C71CF904A300538489 /* Flutter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,14 +101,12 @@
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		3599C4017910D64FCCB1A5BA /* Pods-OneSignalNotificationServiceExtension.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.profile.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.profile.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
-		3B80C3931E831B6300D905FE /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = App.framework; path = Flutter/App.framework; sourceTree = "<group>"; };
 		5BF2FEFAD6F83C930448B22E /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
-		9740EEBA1CF902C7004384FC /* Flutter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flutter.framework; path = Flutter/Flutter.framework; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Randonautica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Randonautica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97C146FB1CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,6 +115,8 @@
 		9C20672611CC58690BD68886 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		B482AD5A4B81CDB5B59D2F4E /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		CB2E5FBFA4996276451734D8 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F40300802475FA6100371740 /* liblib_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblib_ios.a; sourceTree = "<group>"; };
+		F40300812475FA6200371740 /* libgenerators_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgenerators_ios.a; sourceTree = "<group>"; };
 		F449788923C56210009D0C97 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F449788B23C56210009D0C97 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F449788D23C56210009D0C97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,7 +124,6 @@
 		F492F8BD23C0806B00B4D08A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F492F8BF23C080A600B4D08A /* FlutterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterCoordinator.swift; sourceTree = "<group>"; };
 		F492F8C723C0815E00B4D08A /* TrueEntropyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrueEntropyCoordinator.swift; sourceTree = "<group>"; };
-		F494215C244049E7005697FD /* libtemporal_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtemporal_ios.a; sourceTree = "<group>"; };
 		F494215E24404AC3005697FD /* TemporalLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemporalLib.h; sourceTree = "<group>"; };
 		F494216124404D70005697FD /* SteveLib.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveLib.cpp; sourceTree = "<group>"; };
 		F494216224404D70005697FD /* SteveLib.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveLib.hpp; sourceTree = "<group>"; };
@@ -174,10 +170,9 @@
 				F49EEAD523C08D3900928EFB /* AVFoundation.framework in Frameworks */,
 				F49EEAD323C08D3300928EFB /* CoreVideo.framework in Frameworks */,
 				F49EEAD123C08D2B00928EFB /* CoreMedia.framework in Frameworks */,
-				9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */,
-				F494215D244049E7005697FD /* libtemporal_ios.a in Frameworks */,
-				3B80C3941E831B6300D905FE /* App.framework in Frameworks */,
+				F40300822475FA6200371740 /* liblib_ios.a in Frameworks */,
 				BD6A222B9F5A3FDB65BBFFA0 /* Pods_Runner.framework in Frameworks */,
+				F40300832475FA6200371740 /* libgenerators_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +181,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3DA18E12F134D9D10E0A7A8 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
+				F40300842475FB3B00371740 /* liblib_ios.a in Frameworks */,
+				F40300852475FB3E00371740 /* libgenerators_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,9 +205,7 @@
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
-				3B80C3931E831B6300D905FE /* App.framework */,
 				3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */,
-				9740EEBA1CF902C7004384FC /* Flutter.framework */,
 				9740EEB21CF90195004384FC /* Debug.xcconfig */,
 				7AFA3C8E1D35360C0083082E /* Release.xcconfig */,
 				9740EEB31CF90195004384FC /* Generated.xcconfig */,
@@ -335,8 +330,9 @@
 		F494215B244049C5005697FD /* SteveLib */ = {
 			isa = PBXGroup;
 			children = (
+				F40300812475FA6200371740 /* libgenerators_ios.a */,
+				F40300802475FA6100371740 /* liblib_ios.a */,
 				F494215E24404AC3005697FD /* TemporalLib.h */,
-				F494215C244049E7005697FD /* libtemporal_ios.a */,
 				F494216124404D70005697FD /* SteveLib.cpp */,
 				F494216224404D70005697FD /* SteveLib.hpp */,
 			);
@@ -510,7 +506,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" thin";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
 		};
 		93D288B922B0016A6FCEF063 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -707,7 +703,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Randonautica.entitlements;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -722,7 +718,7 @@
 					"$(PROJECT_DIR)/Flutter",
 					"$(PROJECT_DIR)/Runner/SteveLib",
 				);
-				MARKETING_VERSION = 4.0.2;
+				MARKETING_VERSION = 4.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app;
 				PRODUCT_NAME = Randonautica;
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -849,7 +845,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Randonautica.entitlements;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -864,7 +860,7 @@
 					"$(PROJECT_DIR)/Flutter",
 					"$(PROJECT_DIR)/Runner/SteveLib",
 				);
-				MARKETING_VERSION = 4.0.2;
+				MARKETING_VERSION = 4.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app;
 				PRODUCT_NAME = Randonautica;
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -884,7 +880,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Randonautica.entitlements;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -899,7 +895,7 @@
 					"$(PROJECT_DIR)/Flutter",
 					"$(PROJECT_DIR)/Runner/SteveLib",
 				);
-				MARKETING_VERSION = 4.0.2;
+				MARKETING_VERSION = 4.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app;
 				PRODUCT_NAME = Randonautica;
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -921,14 +917,18 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.0.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/SteveLib",
+				);
+				MARKETING_VERSION = 4.0.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app.OneSignalNotificationServiceExtension;
@@ -954,14 +954,18 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.0.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/SteveLib",
+				);
+				MARKETING_VERSION = 4.0.3;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -984,14 +988,18 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 4.0.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/SteveLib",
+				);
+				MARKETING_VERSION = 4.0.3;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
