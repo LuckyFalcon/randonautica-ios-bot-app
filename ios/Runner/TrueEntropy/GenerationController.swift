@@ -246,7 +246,7 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
             } else {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                    print(json)
+                    //print(json)
                     print("uploaded entropy to libwrapper API")
                     
                     DispatchQueue.main.async {
