@@ -19,6 +19,7 @@
 		F40300832475FA6200371740 /* libgenerators_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F40300812475FA6200371740 /* libgenerators_ios.a */; };
 		F40300842475FB3B00371740 /* liblib_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F40300802475FA6100371740 /* liblib_ios.a */; };
 		F40300852475FB3E00371740 /* libgenerators_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F40300812475FA6200371740 /* libgenerators_ios.a */; };
+		F42E897D2476B786003C69A3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42E897C2476B786003C69A3 /* StoreKit.framework */; };
 		F449788C23C56210009D0C97 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449788B23C56210009D0C97 /* NotificationService.swift */; };
 		F449789023C56210009D0C97 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F449788923C56210009D0C97 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F492F8BC23C0805D00B4D08A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492F8BB23C0805D00B4D08A /* Coordinator.swift */; };
@@ -117,6 +118,7 @@
 		CB2E5FBFA4996276451734D8 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40300802475FA6100371740 /* liblib_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblib_ios.a; sourceTree = "<group>"; };
 		F40300812475FA6200371740 /* libgenerators_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgenerators_ios.a; sourceTree = "<group>"; };
+		F42E897C2476B786003C69A3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F449788923C56210009D0C97 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F449788B23C56210009D0C97 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F449788D23C56210009D0C97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F49EEAD523C08D3900928EFB /* AVFoundation.framework in Frameworks */,
+				F42E897D2476B786003C69A3 /* StoreKit.framework in Frameworks */,
 				F49EEAD323C08D3300928EFB /* CoreVideo.framework in Frameworks */,
 				F49EEAD123C08D2B00928EFB /* CoreMedia.framework in Frameworks */,
 				F40300822475FA6200371740 /* liblib_ios.a in Frameworks */,
@@ -263,6 +266,7 @@
 		E72C119F0FCFB146E9E14BAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F42E897C2476B786003C69A3 /* StoreKit.framework */,
 				F49EEAD423C08D3900928EFB /* AVFoundation.framework */,
 				F49EEAD223C08D3300928EFB /* CoreVideo.framework */,
 				F49EEAD023C08D2B00928EFB /* CoreMedia.framework */,
@@ -416,6 +420,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = XSS2Q29FAN;
 						LastSwiftMigration = 1100;
+						ProvisioningStyle = Automatic;
 					};
 					F449788823C56210009D0C97 = {
 						CreatedOnToolsVersion = 11.3;
@@ -703,6 +708,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Randonautica.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
@@ -721,6 +728,7 @@
 				MARKETING_VERSION = 4.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app;
 				PRODUCT_NAME = Randonautica;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "arm64 arm64e";
@@ -845,6 +853,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Randonautica.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
@@ -863,6 +873,7 @@
 				MARKETING_VERSION = 4.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app;
 				PRODUCT_NAME = Randonautica;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -880,6 +891,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Randonautica.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = XSS2Q29FAN;
 				ENABLE_BITCODE = NO;
@@ -898,6 +911,7 @@
 				MARKETING_VERSION = 4.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.randonautica.app;
 				PRODUCT_NAME = Randonautica;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "arm64 arm64e";

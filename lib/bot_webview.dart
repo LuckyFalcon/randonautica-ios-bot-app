@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
+import 'package:randonautica/addons_shop.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
@@ -18,7 +19,7 @@ class BotWebView extends StatelessWidget {
   // camrng
   //
   static const platform = const MethodChannel('com.randonautica.app');
-  // flutter->ios(swift) (used to load the TrueEntropy Camera RNG view controller
+  // flutter->ios(swift) (used to load the TrueEntropy Camera RNG view controller)
   Future<void> _navToCamRNG(int bytesNeeded) async {
     try {
       await platform.invokeMethod('goToTrueEntropy', bytesNeeded);
@@ -26,10 +27,11 @@ class BotWebView extends StatelessWidget {
       print("Failed: '${e.message}'.");
     }
   }
+
   //
   // temporal rng
   //
-  // flutter->ios(swift) (used to load the TrueEntropy Temporal RNG
+  // flutter->ios(swift) (used to load the TrueEntropy Temporal RNG)
   Future<void> _navToTemporal(int bytesNeeded) async {
     try {
       await platform.invokeMethod('goToTemporal', bytesNeeded);
@@ -37,6 +39,18 @@ class BotWebView extends StatelessWidget {
       print("Failed: '${e.message}'.");
     }
   }
+
+  //
+  // Add-ons shop
+  //
+  // C# Fatumbot -> javascript/html webbot client front end -> javascript/flutter bridge -> flutter native IAP screen
+  Future<void> _navToShop(BuildContext context, String userId) async {
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AddonsShop())
+    );
+  }
+
   // ios(swift)->flutter (used as a callback so we are given the GID of entropy generated and uploaded to the libwrapper)
   Future<dynamic> _handleMethod(MethodCall call) async {
     switch(call.method) {
@@ -141,7 +155,7 @@ class BotWebView extends StatelessWidget {
 
       _initLocationPermissions();
     } else if (Platform.isIOS) {
-      botUrl = "https://bot.randonauts.com/index.html?src=ios";
+      botUrl = "https://devbot.randonauts.com/devbotdl.html?src=ios";
     }
 
     platform.setMethodCallHandler(_handleMethod); // for handling javascript->flutter callbacks
@@ -162,6 +176,11 @@ class BotWebView extends StatelessWidget {
                   name: 'flutterChannel_loadTemporalWithBytesNeeded',
                   onMessageReceived: (JavascriptMessage message) {
                     _navToTemporal(int.parse(message.message)); // open swift TrueEntropy Temporal RNG view
+                  }),
+              JavascriptChannel(
+                  name: 'flutterChannel_loadNativeShop',
+                  onMessageReceived: (JavascriptMessage message) {
+                    _navToShop(context, message.message); // open Flutter in-app purchase shop
                   }),
               // we can have more than one channels
             ]),
