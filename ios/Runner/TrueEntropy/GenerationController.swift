@@ -10,6 +10,8 @@ import Flutter
 extension String: Error {}
 
 class GenerationController: UIViewController, CameraFramesDelegate, UITableViewDataSource, UITableViewDelegate {
+    static var isCancelled = false
+    
     var frames: CameraFrames?
     var ticker = 0
     var blockNumber = 0
@@ -39,6 +41,8 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GenerationController.isCancelled = false
         
         // as we bypass the SettingsController and load this GenerationController
         // directly from flutter, we set our default values here (soliax)
@@ -225,6 +229,11 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
     
     // set the entropy in the libwrapper api server
     func postEntropyToLibwrapper(entropy: [UInt8]) {
+        if (GenerationController.isCancelled) {
+            GenerationController.isCancelled = false
+            return
+        }
+
         let timestamp = Int64(NSDate().timeIntervalSince1970)
 
         let params = ["size": entropy.count * 2,
@@ -394,6 +403,7 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
     func numberOfSections(in tableView: UITableView) -> Int { return 1 }
     
     @IBAction func closeClicked(_ sender: Any) {
+        GenerationController.isCancelled = true
         frames?.session?.stopRunning()
         self.closeView()
     }
@@ -401,5 +411,10 @@ class GenerationController: UIViewController, CameraFramesDelegate, UITableViewD
     func closeView() {
         self.performSegue(withIdentifier: "backToSettings", sender: self)
         self.dismiss(animated: false, completion: nil)
+        
+        // by soliax
+        // go back to flutter
+        self.channel?.invokeMethod("gid", arguments: "Cancel")
+        self.coordinatorDelegate?.navigateToFlutter()
     }
 }
