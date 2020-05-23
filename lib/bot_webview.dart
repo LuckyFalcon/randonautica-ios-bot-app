@@ -6,10 +6,15 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:geolocator/geolocator.dart';
-
+import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:toast/toast.dart';
 
 // camrng
 import 'package:flutter/services.dart';
+
+final String piMapsPack = 'fatumbot.addons.nc.maps_pack.v2';
+final String piSkipWaterPack = 'fatumbot.addons.nc.skip_water_pack.v2';
+final String piEverythingPack = 'fatumbot.addons.nc.maps_skip_water_packs.v2';
 
 class BotWebView extends StatelessWidget {
   final Completer<WebViewController> _controller = Completer<WebViewController>();
@@ -45,10 +50,24 @@ class BotWebView extends StatelessWidget {
   //
   // C# Fatumbot -> javascript/html webbot client front end -> javascript/flutter bridge -> flutter native IAP screen
   Future<void> _navToShop(BuildContext context, String userId) async {
-    Navigator.push(
+    final result = await Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => AddonsShop())
+        MaterialPageRoute(builder: (context) => AddonsShop(_available, products, purchases))
     );
+
+    if (result != null && result != '') {
+      // flutter->javascript (send to bot the in-app purchase details)
+      var json = _purchaseDetails2Json(result);
+      var eval = "sendIAPToBot('" + json + "');";
+      webView.evaluateJavascript(eval);
+      Toast.show("Enabling feature...",
+          context,
+          duration: Toast.LENGTH_LONG,
+          gravity:  Toast.BOTTOM,
+          textColor: Colors.white,
+          backgroundColor: Color.fromARGB(255, 88, 136, 226)
+      );
+    }
   }
 
   // ios(swift)->flutter (used as a callback so we are given the GID of entropy generated and uploaded to the libwrapper)
@@ -145,10 +164,124 @@ class BotWebView extends StatelessWidget {
     print("location permission granted? ${geolocationStatus.value}");
   }
 
+  ///
+  /// In-app purchase stuff >>>
+  /// https://fireship.io/lessons/flutter-inapp-purchases/
+  ///
+
+  /// Is the API available on the device
+  bool _available = false;
+
+  /// The In App Purchase plugin
+  InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
+
+  /// Products for sale
+  List<ProductDetails> products = [];
+
+  /// Past purchases
+  List<PurchaseDetails> purchases = [];
+
+  /// Updates to purchases
+  StreamSubscription _subscription;
+
+  /// Get all products available for sale
+  void _getProducts() async {
+    Set<String> ids = Set.from([piMapsPack, piSkipWaterPack, piEverythingPack]);
+    ProductDetailsResponse response = await _iap.queryProductDetails(ids);
+
+    products = response.productDetails;
+    products.sort((a, b) => a.price.compareTo(b.price));;
+  }
+
+  /// Gets past purchases
+  void _getPastPurchases() async {
+    QueryPurchaseDetailsResponse response = await _iap.queryPastPurchases();
+
+    for (PurchaseDetails purchase in response.pastPurchases) {
+      print("[IAP] Past purchase: " + purchase.productID + " => status is: " + purchase.status.toString());
+      if (Platform.isIOS) {
+        InAppPurchaseConnection.instance.completePurchase(purchase);
+      }
+    }
+
+    purchases = response.pastPurchases;
+  }
+
+  void _enablePurchase(PurchaseDetails purchase) {
+    print("[IAP] Verifying purchase of " + purchase.productID);
+    if (purchase != null && purchase.status == PurchaseStatus.purchased) {
+      var json = _purchaseDetails2Json(purchase);
+      var eval = 'sendIAPToBot("' + json + '");';
+      webView.evaluateJavascript(eval);
+      Toast.show("Thank you. Enabling now...",
+          context,
+          duration: Toast.LENGTH_LONG,
+          gravity:  Toast.BOTTOM,
+          textColor: Colors.white,
+          backgroundColor: Color.fromARGB(255, 88, 136, 226)
+      );
+    }
+  }
+
+  String _purchaseDetails2Json(PurchaseDetails purchaseDetails) {
+    return '{' +
+        '"purchaseID":"' +             purchaseDetails.purchaseID + '",' +
+        '"productID":"' +              purchaseDetails.productID + '",' +
+        '"localVerificationData":"' +  purchaseDetails.verificationData.localVerificationData + '",' +
+        '"serverVerificationData":"' + purchaseDetails.verificationData.serverVerificationData + '",' +
+        '"source":"' +                 purchaseDetails.verificationData.source.toString() + '",' +
+        '"transactionDate":"' +        purchaseDetails.transactionDate + '",' +
+//            '"skPaymentTransaction":"' +   purchaseDetails.skPaymentTransaction + '",' +
+//            '"billingClientPurchase":"' +  purchaseDetails.billingClientPurchase. + '",' +
+        '"status":"' +                 purchaseDetails.status.toString() + '"' +
+        '}';
+  }
+
+  _initIAP() async {
+    // Check availability of In App Purchases
+    _available = await _iap.isAvailable();
+
+    if (_available) {
+      await _getProducts();
+      await _getPastPurchases();
+
+      // Listen to new purchases
+      _subscription = _iap.purchaseUpdatedStream.listen((purchaseDetailsList) {
+        for (PurchaseDetails purchase in purchaseDetailsList) {
+          print('[IAP] New purchase: ' + purchase.productID);
+          _iap.completePurchase(purchase);
+          _enablePurchase(purchase);
+        }
+        purchases.addAll(purchaseDetailsList);
+      }, onDone: () {
+        print("[IAP] onDone");
+        _subscription.cancel();
+      }, onError: (error) {
+        // handle error here.
+        print("[IAP] error: " + error);
+        Toast.show("Purchase error: " + error,
+                    context,
+                    duration: Toast.LENGTH_LONG,
+                    gravity:  Toast.BOTTOM,
+                    textColor: Colors.red[600],
+                    backgroundColor: Colors.black
+        );
+      });
+    }
+  }
+
+  ///
+  /// <<< In-app purchase stuff
+  ///
+
+  BuildContext context;
+
   BotWebView();
 
   @override
   Widget build(BuildContext context) {
+    this.context = context;
+
     var botUrl = "";
     if (Platform.isAndroid) {
       botUrl = "https://devbot.randonauts.com/devbot.html?src=android";
@@ -157,6 +290,8 @@ class BotWebView extends StatelessWidget {
     } else if (Platform.isIOS) {
       botUrl = "https://devbot.randonauts.com/devbotdl.html?src=ios";
     }
+
+    _initIAP();
 
     platform.setMethodCallHandler(_handleMethod); // for handling javascript->flutter callbacks
     return Scaffold(
