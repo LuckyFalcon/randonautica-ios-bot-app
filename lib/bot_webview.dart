@@ -213,8 +213,9 @@ class BotWebView extends StatelessWidget {
   void _enablePurchase(PurchaseDetails purchase) {
     print("[IAP] Verifying purchase of " + purchase.productID);
     if (purchase != null && purchase.status == PurchaseStatus.purchased) {
+      // flutter->javascript (send to bot the in-app purchase details)
       var json = _purchaseDetails2Json(purchase);
-      var eval = 'sendIAPToBot("' + json + '");';
+      var eval = "sendIAPToBot('" + json + "');";
       webView.evaluateJavascript(eval);
       Toast.show("Thank you. Enabling now...",
           context,
