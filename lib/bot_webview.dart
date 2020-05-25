@@ -52,7 +52,7 @@ class BotWebView extends StatelessWidget {
   Future<void> _navToShop(BuildContext context, String userId) async {
     final result = await Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => AddonsShop(_available, products, purchases))
+        MaterialPageRoute(builder: (context) => AddonsShop(_available, products, purchases, userId))
     );
 
     if (result != null && result != '') {
@@ -169,6 +169,9 @@ class BotWebView extends StatelessWidget {
   /// https://fireship.io/lessons/flutter-inapp-purchases/
   ///
 
+  /// Fatumbot User ID
+  String userID = "";
+
   /// Is the API available on the device
   bool _available = false;
 
@@ -200,7 +203,7 @@ class BotWebView extends StatelessWidget {
     for (PurchaseDetails purchase in response.pastPurchases) {
       print("[IAP] Past purchase: " + purchase.productID + " => status is: " + purchase.status.toString());
       if (Platform.isIOS) {
-        InAppPurchaseConnection.instance.completePurchase(purchase);
+        InAppPurchaseConnection.instance.completePurchase(purchase, developerPayload: userID);
       }
     }
 
@@ -288,7 +291,7 @@ class BotWebView extends StatelessWidget {
 
       _initLocationPermissions();
     } else if (Platform.isIOS) {
-      botUrl = "https://devbot.randonauts.com/devbotdl.html?src=ios";
+      botUrl = "https://bot.randonauts.com/index.html?src=ios";
     }
 
     _initIAP();
@@ -315,6 +318,7 @@ class BotWebView extends StatelessWidget {
               JavascriptChannel(
                   name: 'flutterChannel_loadNativeShop',
                   onMessageReceived: (JavascriptMessage message) {
+                    userID = message.message;
                     _navToShop(context, message.message); // open Flutter in-app purchase shop
                   }),
               // we can have more than one channels

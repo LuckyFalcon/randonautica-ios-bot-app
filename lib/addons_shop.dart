@@ -5,14 +5,16 @@ class AddonsShop extends StatefulWidget {
   bool available = false;
   List<ProductDetails> products;
   List<PurchaseDetails> purchases;
+  String userID;
 
-  AddonsShop(bool available, List<ProductDetails> products, List<PurchaseDetails> purchases) {
+  AddonsShop(bool available, List<ProductDetails> products, List<PurchaseDetails> purchases, String userID) {
     this.available = available;
     this.products = products;
     this.purchases = purchases;
+    this.userID = userID;
   }
 
-  createState() => AddonsShopState(available, products, purchases);
+  createState() => AddonsShopState(available, products, purchases, userID);
 }
 
 // https://fireship.io/lessons/flutter-inapp-purchases/
@@ -31,10 +33,13 @@ class AddonsShopState extends State<AddonsShop> {
 
   BuildContext context;
 
-  AddonsShopState(bool available, List<ProductDetails> products, List<PurchaseDetails> purchases) {
+  String _userID;
+
+  AddonsShopState(bool available, List<ProductDetails> products, List<PurchaseDetails> purchases, userID) {
     _available = available;
     _products = products;
     _purchases = purchases;
+    _userID = userID;
   }
 
   /// Purchase a product
@@ -42,7 +47,7 @@ class AddonsShopState extends State<AddonsShop> {
     print("[IAP] Purchasing " + prod.id);
     final PurchaseParam purchaseParam = PurchaseParam(productDetails: prod);
     _iap.buyNonConsumable(purchaseParam: purchaseParam);
-    Navigator.pop(context);
+    Navigator.pop(context); // callback in bot_webview
   }
 
   void _enablePurchase(String productId) {
