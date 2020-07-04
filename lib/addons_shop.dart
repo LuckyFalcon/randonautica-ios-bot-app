@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:randonautica/bot_webview.dart';
 
 class AddonsShop extends StatefulWidget {
   bool available = false;
-  List<ProductDetails> products;
+  Map<String, ProductDetails> products;
   List<PurchaseDetails> purchases;
   String userID;
 
-  AddonsShop(bool available, List<ProductDetails> products, List<PurchaseDetails> purchases, String userID) {
+  AddonsShop(bool available, Map<String, ProductDetails> products, List<PurchaseDetails> purchases, String userID) {
     this.available = available;
     this.products = products;
     this.purchases = purchases;
@@ -19,6 +20,11 @@ class AddonsShop extends StatefulWidget {
 
 // https://fireship.io/lessons/flutter-inapp-purchases/
 class AddonsShopState extends State<AddonsShop> {
+  static double iapNameFontSize = 16;
+  static double iapDescFontSize = 12;
+  static double iapPriceFontSize = 15;
+  static double iapBtnFontSize = 14;
+
   /// Is the API available on the device
   bool _available = false;
 
@@ -26,7 +32,7 @@ class AddonsShopState extends State<AddonsShop> {
   InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
 
   /// Products for sale
-  List<ProductDetails> _products = [];
+  Map<String, ProductDetails> _products;
 
   /// Past purchases
   List<PurchaseDetails> _purchases = [];
@@ -35,7 +41,7 @@ class AddonsShopState extends State<AddonsShop> {
 
   String _userID;
 
-  AddonsShopState(bool available, List<ProductDetails> products, List<PurchaseDetails> purchases, userID) {
+  AddonsShopState(bool available, Map<String, ProductDetails> products, List<PurchaseDetails> purchases, userID) {
     _available = available;
     _products = products;
     _purchases = purchases;
@@ -56,6 +62,7 @@ class AddonsShopState extends State<AddonsShop> {
   }
 
   PurchaseDetails _hasPurchased(String productID) {
+    productID = productID.replaceAll(productID.substring(productID.lastIndexOf('.v')), '');
     return _purchases.firstWhere( (purchase) => purchase.productID == productID, orElse: () => null);
   }
 
@@ -77,41 +84,117 @@ class AddonsShopState extends State<AddonsShop> {
                       colors: [Color.fromARGB(255, 88, 136, 226), Color.fromARGB(255, 75, 208, 222)])),
               child: Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    for (var prod in _products)
-
-                    // UI if already purchased
-                      if (_hasPurchased(prod.id) != null)
-                        ...[
-                          Text(prod.title, style: TextStyle(color: Colors.white, fontSize: 22)),
-                          Text(prod.description, style: TextStyle(color: Colors.white, fontSize: 14)),
-                          FlatButton(
-                            child: Text('ENABLE', style: TextStyle(color: Colors.white, fontSize: 18)),
-                            color: Color.fromARGB(255, 88, 136, 226),
-                            onPressed: () => _enablePurchase(prod.id),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                // piAdd20Points
+                                Text(_products[piAdd20Points].title, style: TextStyle(color: Colors.white, fontSize: iapNameFontSize, fontWeight: FontWeight.bold)),
+//                                Text(_products[piAdd20Points].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
+                                Text(_products[piAdd20Points].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
+                                FlatButton(
+                                  child: Text(null != _hasPurchased(piAdd20Points) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                                  color: Color.fromARGB(255, 75, 208, 222),
+                                  onPressed: () => null == _hasPurchased(piAdd20Points) ? _enablePurchase(piAdd20Points) : _buyProduct(_products[piAdd20Points]),
+                                ),
+                                ]
                           ),
-                          Divider(
-                            color: Colors.white,
+                          Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                // piAdd60Points
+                                Text(_products[piAdd60Points].title, style: TextStyle(color: Colors.white, fontSize: iapNameFontSize, fontWeight: FontWeight.bold)),
+//                                Text(_products[piAdd60Points].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
+                                Text(_products[piAdd60Points].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
+                                FlatButton(
+                                  child: Text(null == _hasPurchased(piAdd60Points) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                                  color: Color.fromARGB(255, 75, 208, 222),
+                                  onPressed: () => null == _hasPurchased(piAdd60Points) ? _enablePurchase(piAdd60Points) : _buyProduct(_products[piAdd60Points]),
+                                ),
+                              ]
+                          ),
+                          ]
+                    ),
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          // piInfinitePoints
+                          Text(_products[piInfinitePoints].title, style: TextStyle(color: Colors.white, fontSize: iapNameFontSize, fontWeight: FontWeight.bold)),
+//                          Text(_products[piInfinitePoints].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
+                          Text(_products[piInfinitePoints].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
+                          FlatButton(
+                            child: Text(null == _hasPurchased(piInfinitePoints) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                            color: Color.fromARGB(255, 75, 208, 222),
+                            onPressed: () => null == _hasPurchased(piInfinitePoints) ? _enablePurchase(piInfinitePoints) : _buyProduct(_products[piInfinitePoints]),
                           ),
                         ]
-
-                      // UI if NOT purchased
-                      else
-                      ...[
-                        Text(prod.title, style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold)),
-                        Text(prod.description, style: TextStyle(color: Colors.white, fontSize: 14)),
-                        Text(prod.price,
-                            style: TextStyle(color: Colors.white, fontSize: 30)),
-                        FlatButton(
-                          child: Text('BUY', style: TextStyle(color: Colors.white, fontSize: 18)),
-                          color: Color.fromARGB(255, 88, 136, 226),
-                          onPressed: () => _buyProduct(prod),
-                        ),
-                        Divider(
-                          color: Colors.white,
-                        ),
-                      ]
+                    ),
+                    Divider(
+                      color: Colors.white,
+                    ),
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          // piMapsPack
+                          Text(_products[piMapsPack].title, style: TextStyle(color: Colors.white, fontSize: iapNameFontSize, fontWeight: FontWeight.bold)),
+                          Text(_products[piMapsPack].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
+                          Text(_products[piMapsPack].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
+                          FlatButton(
+                            child: Text(null == _hasPurchased(piMapsPack) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                            color: Color.fromARGB(255, 88, 136, 226),
+                            onPressed: () => null == _hasPurchased(piMapsPack) ? _enablePurchase(piMapsPack) : _buyProduct(_products[piMapsPack]),
+                          ),
+                        ]
+                    ),
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          // piSkipWaterPack
+                          Text(_products[piSkipWaterPack].title, style: TextStyle(color: Colors.white, fontSize: iapNameFontSize, fontWeight: FontWeight.bold)),
+                          Text(_products[piSkipWaterPack].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
+                          Text(_products[piSkipWaterPack].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
+                          FlatButton(
+                            child: Text(null == _hasPurchased(piSkipWaterPack) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                            color: Color.fromARGB(255, 88, 136, 226),
+                            onPressed: () => null == _hasPurchased(piSkipWaterPack) ? _enablePurchase(piSkipWaterPack) : _buyProduct(_products[piSkipWaterPack]),
+                          ),
+                        ]
+                    ),
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          // piExtendRadius20km
+                          Text(_products[piExtendRadius20km].title, style: TextStyle(color: Colors.white, fontSize: iapNameFontSize, fontWeight: FontWeight.bold)),
+                          Text(_products[piExtendRadius20km].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
+                          Text(_products[piExtendRadius20km].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
+                          FlatButton(
+                            child: Text(null == _hasPurchased(piExtendRadius20km) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                            color: Color.fromARGB(255, 88, 136, 226),
+                            onPressed: () => null == _hasPurchased(piExtendRadius20km) ? _enablePurchase(piExtendRadius20km) : _buyProduct(_products[piExtendRadius20km]),
+                          ),
+                        ]
+                    ),
+                    Divider(
+                      color: Colors.white,
+                    ),
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          // piEverythingPack
+                          Text(_products[piEverythingPack].title, style: TextStyle(color: Colors.white, fontSize: iapNameFontSize, fontWeight: FontWeight.bold)),
+                          Text(_products[piEverythingPack].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
+                          Text(_products[piEverythingPack].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
+                          FlatButton(
+                            child: Text(null == _hasPurchased(piEverythingPack) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                            color: Color.fromARGB(255, 88, 136, 226),
+                            onPressed: () => null == _hasPurchased(piEverythingPack) ? _enablePurchase(piEverythingPack) : _buyProduct(_products[piEverythingPack]),
+                          ),
+                        ]
+                    ),
                   ],
                 ),
               ),

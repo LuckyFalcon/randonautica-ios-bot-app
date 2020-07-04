@@ -12,9 +12,13 @@ import 'package:toast/toast.dart';
 // camrng
 import 'package:flutter/services.dart';
 
+final String piAdd20Points = 'fatumbot.addons.c.add_20_points.v2';
+final String piAdd60Points = 'fatumbot.addons.c.add_60_points.v2';
+final String piInfinitePoints = 'fatumbot.addons.nc.infinite_points.v2';
+final String piExtendRadius20km = 'fatumbot.addons.nc.extend_radius_20km.v2';
 final String piMapsPack = 'fatumbot.addons.nc.maps_pack.v2';
 final String piSkipWaterPack = 'fatumbot.addons.nc.skip_water_pack.v2';
-final String piEverythingPack = 'fatumbot.addons.nc.maps_skip_water_packs.v2';
+final String piEverythingPack = 'fatumbot.addons.nc.everything_pack.v3';
 
 class BotWebView extends StatelessWidget {
   final Completer<WebViewController> _controller = Completer<WebViewController>();
@@ -179,7 +183,7 @@ class BotWebView extends StatelessWidget {
   InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
 
   /// Products for sale
-  List<ProductDetails> products = [];
+  Map<String, ProductDetails> products = new Map<String, ProductDetails>();
 
   /// Past purchases
   List<PurchaseDetails> purchases = [];
@@ -189,11 +193,39 @@ class BotWebView extends StatelessWidget {
 
   /// Get all products available for sale
   void _getProducts() async {
-    Set<String> ids = Set.from([piMapsPack, piSkipWaterPack, piEverythingPack]);
+    Set<String> ids = Set.from([piAdd20Points, piAdd60Points, piInfinitePoints, piExtendRadius20km, piMapsPack, piSkipWaterPack, piEverythingPack]);
     ProductDetailsResponse response = await _iap.queryProductDetails(ids);
 
-    products = response.productDetails;
-    products.sort((a, b) => a.price.compareTo(b.price));;
+    for (var product in response.productDetails) {
+      if (product.id == piAdd20Points)
+      {
+        products[piAdd20Points] = product;
+      }
+      else if (product.id == piAdd60Points)
+      {
+        products[piAdd60Points] = product;
+      }
+      else if (product.id == piInfinitePoints)
+      {
+        products[piInfinitePoints] = product;
+      }
+      else if (product.id == piExtendRadius20km)
+      {
+        products[piExtendRadius20km] = product;
+      }
+      else if (product.id == piMapsPack)
+      {
+        products[piMapsPack] = product;
+      }
+      else if (product.id == piSkipWaterPack)
+      {
+        products[piSkipWaterPack] = product;
+      }
+      else if (product.id == piEverythingPack)
+      {
+        products[piEverythingPack] = product;
+      }
+    }
   }
 
   /// Gets past purchases
@@ -292,7 +324,8 @@ class BotWebView extends StatelessWidget {
 
       _initLocationPermissions();
     } else if (Platform.isIOS) {
-      botUrl = "https://bot.randonauts.com/index.html?src=ios";
+      botUrl = "http://192.168.44.6:2222/localbot.html?src=ios";
+      //botUrl = "https://bot.randonauts.com/index.html?src=ios";
     }
 
     _initIAP();
