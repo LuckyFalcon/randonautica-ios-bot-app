@@ -8,17 +8,18 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:toast/toast.dart';
+import 'package:flutter_udid/flutter_udid.dart';
 
 // camrng
 import 'package:flutter/services.dart';
 
-final String piAdd20Points = 'fatumbot.addons.c.add_20_points.v2';
-final String piAdd60Points = 'fatumbot.addons.c.add_60_points.v2';
-final String piInfinitePoints = 'fatumbot.addons.nc.infinite_points.v2';
-final String piExtendRadius20km = 'fatumbot.addons.nc.extend_radius_20km.v2';
+final String piAdd20Points = 'fatumbot.addons.c.add_20_points.v4';
+final String piAdd60Points = 'fatumbot.addons.c.add_60_points.v4';
+final String piInfinitePoints = 'fatumbot.addons.nc.infinite_points.v4';
+final String piExtendRadius20km = 'fatumbot.addons.nc.extend_radius_20km.v4';
 final String piMapsPack = 'fatumbot.addons.nc.maps_pack.v2';
 final String piSkipWaterPack = 'fatumbot.addons.nc.skip_water_pack.v2';
-final String piEverythingPack = 'fatumbot.addons.nc.everything_pack.v3';
+final String piEverythingPack = 'fatumbot.addons.nc.everything_pack.v4';
 
 class BotWebView extends StatelessWidget {
   final Completer<WebViewController> _controller = Completer<WebViewController>();
@@ -148,6 +149,11 @@ class BotWebView extends StatelessWidget {
       // Twitter online
       await launch(url);
     }
+  }
+
+  _initWebBot() async {
+    String udid = await FlutterUdid.udid;
+    webView.evaluateJavascript('initWebBot("${udid}");');
   }
 
   _initOneSignal() async {
@@ -324,8 +330,9 @@ class BotWebView extends StatelessWidget {
 
       _initLocationPermissions();
     } else if (Platform.isIOS) {
-      botUrl = "http://192.168.44.6:2222/localbot.html?src=ios";
-      //botUrl = "https://bot.randonauts.com/index.html?src=ios";
+//      botUrl = "http://192.168.44.6:2222/localbot.html?src=ios";
+//      botUrl = "http://192.168.44.6:2222/index2.html?src=ios";
+      botUrl = "https://bot.randonauts.com/index2.html?src=ios";
     }
 
     _initIAP();
@@ -362,7 +369,8 @@ class BotWebView extends StatelessWidget {
               _controller.complete(webViewController);
             },
             onPageFinished: (String page) {
-              if (page.contains("index.html")){
+              if (page.contains("index2.html") || page.contains("localbot.html")) {
+                _initWebBot();
                 _initOneSignal();
               }
             },
