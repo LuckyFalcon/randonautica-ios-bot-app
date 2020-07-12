@@ -33,7 +33,7 @@ dependencies:
   geolocator: ^5.3.2+2
   location_permissions: 3.0.0+1
   url_launcher: any
-  onesignal_flutter: ^2.0.0
+  onesignal_flutter: ^2.6.0
 
 dev_dependencies:
   flutter_test:
