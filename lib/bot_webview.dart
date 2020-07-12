@@ -345,12 +345,14 @@ class BotWebView extends StatelessWidget {
     if (Platform.isAndroid) {
       botUrl = "https://devbot.randonauts.com/devbotdl.html?src=android";
 
-      _initLocationPermissions();
     } else if (Platform.isIOS) {
 //      botUrl = "http://192.168.44.6:2222/localbot.html?src=ios";
 //      botUrl = "http://192.168.44.6:2222/index2.html?src=ios";
-      botUrl = "https://bot.randonauts.com/index2.html?src=ios";
+//      botUrl = "https://bot.randonauts.com/index2.html?src=ios";
+      botUrl = "https://devbot.randonauts.com/devbotdl.html?src=ios";
     }
+
+    _initLocationPermissions();
 
     _initIAP();
 
