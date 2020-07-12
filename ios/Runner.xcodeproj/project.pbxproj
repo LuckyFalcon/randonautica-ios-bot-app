@@ -158,6 +158,18 @@
 		F456513B24919796002A497F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		F456513C24919796002A497F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/TrueEntropyMain.strings; sourceTree = "<group>"; };
 		F456513D24919796002A497F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F4783B5F24BB160E0060CF36 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		F4783B6024BB160E0060CF36 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/TrueEntropyMain.strings"; sourceTree = "<group>"; };
+		F4783B6124BB160E0060CF36 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F4783B6224BB16150060CF36 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
+		F4783B6324BB16150060CF36 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/TrueEntropyMain.strings"; sourceTree = "<group>"; };
+		F4783B6424BB16150060CF36 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F4783B6524BB161E0060CF36 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
+		F4783B6624BB161E0060CF36 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/TrueEntropyMain.strings; sourceTree = "<group>"; };
+		F4783B6724BB161F0060CF36 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F4783B6824BB16340060CF36 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
+		F4783B6924BB16340060CF36 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/TrueEntropyMain.strings; sourceTree = "<group>"; };
+		F4783B6A24BB16340060CF36 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F492F8BB23C0805D00B4D08A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F492F8BD23C0806B00B4D08A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F492F8BF23C080A600B4D08A /* FlutterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterCoordinator.swift; sourceTree = "<group>"; };
@@ -484,6 +496,10 @@
 				ru,
 				it,
 				de,
+				"pt-BR",
+				"pt-PT",
+				tr,
+				uk,
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
@@ -685,6 +701,10 @@
 				F4565132249135E0002A497F /* ru */,
 				F4565135249135EC002A497F /* it */,
 				F456513B24919796002A497F /* de */,
+				F4783B5F24BB160E0060CF36 /* pt-BR */,
+				F4783B6224BB16150060CF36 /* pt-PT */,
+				F4783B6524BB161E0060CF36 /* tr */,
+				F4783B6824BB16340060CF36 /* uk */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -705,6 +725,10 @@
 				F4565134249135E0002A497F /* ru */,
 				F4565137249135EC002A497F /* it */,
 				F456513D24919796002A497F /* de */,
+				F4783B6124BB160E0060CF36 /* pt-BR */,
+				F4783B6424BB16150060CF36 /* pt-PT */,
+				F4783B6724BB161F0060CF36 /* tr */,
+				F4783B6A24BB16340060CF36 /* uk */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -725,6 +749,10 @@
 				F4565133249135E0002A497F /* ru */,
 				F4565136249135EC002A497F /* it */,
 				F456513C24919796002A497F /* de */,
+				F4783B6024BB160E0060CF36 /* pt-BR */,
+				F4783B6324BB16150060CF36 /* pt-PT */,
+				F4783B6624BB161E0060CF36 /* tr */,
+				F4783B6924BB16340060CF36 /* uk */,
 			);
 			name = TrueEntropyMain.storyboard;
 			sourceTree = "<group>";

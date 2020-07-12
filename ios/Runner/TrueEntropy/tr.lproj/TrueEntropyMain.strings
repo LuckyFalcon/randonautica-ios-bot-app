@@ -1,0 +1,102 @@
+
+/* Class = "UIButton"; normalTitle = "ADVANCED SETTINGS"; ObjectID = "1cb-CM-7zk"; */
+"1cb-CM-7zk.normalTitle" = "ADVANCED SETTINGS";
+
+/* Class = "UIButton"; normalTitle = "COPY"; ObjectID = "2DA-il-pBc"; */
+"2DA-il-pBc.normalTitle" = "COPY";
+
+/* Class = "UILabel"; text = "Infinite"; ObjectID = "3KH-Sl-E8W"; */
+"3KH-Sl-E8W.text" = "Infinite";
+
+/* Class = "UILabel"; text = "χ² LIMIT"; ObjectID = "76M-B5-s1j"; */
+"76M-B5-s1j.text" = "χ² LIMIT";
+
+/* Class = "UILabel"; text = "Discard entropy block if tested above the limit"; ObjectID = "A7c-7p-OLp"; */
+"A7c-7p-OLp.text" = "Discard entropy block if tested above the limit";
+
+/* Class = "UILabel"; text = "URL"; ObjectID = "CCe-2F-ehK"; */
+"CCe-2F-ehK.text" = "URL";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "Ced-cm-9OE"; */
+"Ced-cm-9OE.text" = "Detail";
+
+/* Class = "UIButton"; normalTitle = "NETWORK"; ObjectID = "IZf-80-ZCy"; */
+"IZf-80-ZCy.normalTitle" = "NETWORK";
+
+/* Class = "UITextField"; placeholder = "Destination public key"; ObjectID = "LDo-3h-GsP"; */
+"LDo-3h-GsP.placeholder" = "Destination public key";
+
+/* Class = "UILabel"; text = "BLOCK SIZE"; ObjectID = "LDq-Gg-Vbp"; */
+"LDq-Gg-Vbp.text" = "BLOCK SIZE";
+
+/* Class = "UILabel"; text = "GENERATING ENTROPY"; ObjectID = "OXX-2X-76n"; */
+"OXX-2X-76n.text" = "GENERATING ENTROPY";
+
+/* Class = "UIButton"; normalTitle = "HIGH"; ObjectID = "PKR-fA-VfP"; */
+"PKR-fA-VfP.normalTitle" = "HIGH";
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"; ObjectID = "SLf-PP-xTz"; */
+"SLf-PP-xTz.text" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore";
+
+/* Class = "UILabel"; text = "DELIVERY"; ObjectID = "TG8-xo-Yl9"; */
+"TG8-xo-Yl9.text" = "DELIVERY";
+
+/* Class = "UILabel"; text = "1 Block"; ObjectID = "V3d-Kf-Vvb"; */
+"V3d-Kf-Vvb.text" = "1 Block";
+
+/* Class = "UIButton"; normalTitle = "MID"; ObjectID = "V8z-HF-uJd"; */
+"V8z-HF-uJd.normalTitle" = "MID";
+
+/* Class = "UILabel"; text = "BITS PER PIXEL"; ObjectID = "Z3r-Sq-7z1"; */
+"Z3r-Sq-7z1.text" = "BITS PER PIXEL";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "ceF-7R-1CB"; */
+"ceF-7R-1CB.normalTitle" = "SAVE";
+
+/* Class = "UITextField"; text = "330"; ObjectID = "dqR-cH-iAR"; */
+"dqR-cH-iAR.text" = "330";
+
+/* Class = "UIButton"; normalTitle = "ⓧ"; ObjectID = "hFH-v4-nkG"; */
+"hFH-v4-nkG.normalTitle" = "ⓧ";
+
+/* Class = "UILabel"; text = "Advanced Settings"; ObjectID = "hxK-8a-2t4"; */
+"hxK-8a-2t4.text" = "Advanced Settings";
+
+/* Class = "UITextField"; placeholder = "http://example.com"; ObjectID = "iEK-cV-r2U"; */
+"iEK-cV-r2U.placeholder" = "http://example.com";
+
+/* Class = "UITextField"; text = "http://zax-test.vault12.com"; ObjectID = "iEK-cV-r2U"; */
+"iEK-cV-r2U.text" = "http://zax-test.vault12.com";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "jhF-Og-mnT"; */
+"jhF-Og-mnT.text" = "Title";
+
+/* Class = "UILabel"; text = "devicePK"; ObjectID = "jmT-Ia-KpT"; */
+"jmT-Ia-KpT.text" = "devicePK";
+
+/* Class = "UIButton"; normalTitle = "AIRDROP"; ObjectID = "lDV-U8-bcS"; */
+"lDV-U8-bcS.normalTitle" = "AIRDROP";
+
+/* Class = "UILabel"; text = "Device key"; ObjectID = "oHH-g5-9nc"; */
+"oHH-g5-9nc.text" = "Device key";
+
+/* Class = "UIButton"; normalTitle = "GENERATE"; ObjectID = "tjq-bM-soT"; */
+"tjq-bM-soT.normalTitle" = "GENERATE";
+
+/* Class = "UILabel"; text = "AMOUNT TO GENERATE"; ObjectID = "uus-Gh-r7Y"; */
+"uus-Gh-r7Y.text" = "AMOUNT TO GENERATE";
+
+/* Class = "UIButton"; normalTitle = "LOW"; ObjectID = "vRR-y2-Ot8"; */
+"vRR-y2-Ot8.normalTitle" = "LOW";
+
+/* Class = "UILabel"; text = "1 MB"; ObjectID = "w9B-pR-1Nl"; */
+"w9B-pR-1Nl.text" = "1 MB";
+
+/* Class = "UILabel"; text = "Include CSV file along with the binary"; ObjectID = "y2U-Pu-qI0"; */
+"y2U-Pu-qI0.text" = "Include CSV file along with the binary";
+
+/* Class = "UILabel"; text = "Recipient"; ObjectID = "znP-C0-N44"; */
+"znP-C0-N44.text" = "Recipient";
+
+/* Class = "UILabel"; text = "TrueEntropy"; ObjectID = "zzw-s6-3Dr"; */
+"zzw-s6-3Dr.text" = "TrueEntropy";
