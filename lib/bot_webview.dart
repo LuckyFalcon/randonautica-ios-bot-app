@@ -9,6 +9,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter_udid/flutter_udid.dart';
+import 'package:location_permissions/location_permissions.dart';
 
 // camrng
 import 'package:flutter/services.dart';
@@ -48,6 +49,18 @@ class BotWebView extends StatelessWidget {
     } on PlatformException catch (e) {
       print("Failed: '${e.message}'.");
     }
+  }
+
+  //
+  // get location
+  //
+  // flutter->ios(swift)/android. use native code, not webview/js to get the current location
+  Future<void> _getCurrentLocation() async {
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    var lat = position.latitude?.toString();
+    var lon = position.longitude?.toString();
+    var eval = "currentLocationCallback(" + lat + "," + lon + ");";
+    webView.evaluateJavascript(eval);
   }
 
   //
@@ -172,6 +185,10 @@ class BotWebView extends StatelessWidget {
   _initLocationPermissions() async {
     GeolocationStatus geolocationStatus = await Geolocator().checkGeolocationPermissionStatus();
     print("location permission granted? ${geolocationStatus.value}");
+    if (geolocationStatus.value == 0) {
+      PermissionStatus permission = await LocationPermissions()
+          .requestPermissions();
+    }
   }
 
   ///
@@ -326,7 +343,7 @@ class BotWebView extends StatelessWidget {
 
     var botUrl = "";
     if (Platform.isAndroid) {
-      botUrl = "https://devbot.randonauts.com/devbot.html?src=android";
+      botUrl = "https://devbot.randonauts.com/devbotdl.html?src=android";
 
       _initLocationPermissions();
     } else if (Platform.isIOS) {
@@ -362,6 +379,11 @@ class BotWebView extends StatelessWidget {
                     userID = message.message;
                     _navToShop(context, message.message); // open Flutter in-app purchase shop
                   }),
+              JavascriptChannel(
+                  name: 'flutterChannel_getCurrentLocation',
+                  onMessageReceived: (JavascriptMessage message) {
+                    _getCurrentLocation();
+                  }),
               // we can have more than one channels
             ]),
             onWebViewCreated: (WebViewController webViewController) {
@@ -369,7 +391,7 @@ class BotWebView extends StatelessWidget {
               _controller.complete(webViewController);
             },
             onPageFinished: (String page) {
-              if (page.contains("index2.html") || page.contains("localbot.html")) {
+              if (page.contains("index2.html") || page.contains("localbot.html") || page.contains("devbotdl.html")) {
                 _initWebBot();
                 _initOneSignal();
               }
