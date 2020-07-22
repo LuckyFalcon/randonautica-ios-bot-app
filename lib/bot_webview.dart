@@ -309,7 +309,7 @@ class BotWebView extends StatelessWidget {
     return '{' +
         '"purchaseID":"' +             purchaseDetails.purchaseID + '",' +
         '"productID":"' +              purchaseDetails.productID + '",' +
-        '"localVerificationData":"' +  purchaseDetails.verificationData.localVerificationData + '",' +
+//        '"localVerificationData":"' +  purchaseDetails.verificationData.localVerificationData + '",' + // This was causing issues on Android coz it was a Json object and wasn't escaping nicely
         '"serverVerificationData":"' + purchaseDetails.verificationData.serverVerificationData + '",' +
         '"source":"' +                 purchaseDetails.verificationData.source.toString() + '",' +
         '"transactionDate":"' +        purchaseDetails.transactionDate + '",' +
