@@ -15,11 +15,22 @@ import 'package:location_permissions/location_permissions.dart';
 import 'package:flutter/services.dart';
 
 final String piAdd20Points = 'fatumbot.addons.c.add_20_points.v4';
+final String piAdd20PointsOld = 'get_points';
+
 final String piAdd60Points = 'fatumbot.addons.c.add_60_points.v4';
+final String piAdd60PointsOld = 'get_more_points';
+
 final String piInfinitePoints = 'fatumbot.addons.nc.infinite_points.v4';
+final String piInfinitePointsOld = 'infinte_points';
+
 final String piExtendRadius20km = 'fatumbot.addons.nc.extend_radius_20km.v4';
+final String piExtendRadius20kmOld = 'radius_extend';
+
 final String piMapsPack = 'fatumbot.addons.nc.maps_pack.v2';
+
 final String piSkipWaterPack = 'fatumbot.addons.nc.skip_water_pack.v2';
+final String piSkipWaterPackOld = 'skip_water_points';
+
 final String piEverythingPack = 'fatumbot.addons.nc.everything_pack.v4';
 
 class BotWebView extends StatelessWidget {
@@ -216,7 +227,19 @@ class BotWebView extends StatelessWidget {
 
   /// Get all products available for sale
   void _getProducts() async {
-    Set<String> ids = Set.from([piAdd20Points, piAdd60Points, piInfinitePoints, piExtendRadius20km, piMapsPack, piSkipWaterPack, piEverythingPack]);
+    Set<String> ids = Set.from([
+      piAdd20Points,
+      piAdd20PointsOld,
+      piAdd60Points,
+      piAdd60PointsOld,
+      piInfinitePoints,
+      piInfinitePointsOld,
+      piExtendRadius20km,
+      piExtendRadius20kmOld,
+      piMapsPack,
+      piSkipWaterPack,
+      piSkipWaterPackOld,
+      piEverythingPack]);
     ProductDetailsResponse response = await _iap.queryProductDetails(ids);
 
     for (var product in response.productDetails) {
