@@ -68,7 +68,9 @@ class AddonsShopState extends State<AddonsShop> {
   }
 
   PurchaseDetails _hasPurchased(String productID) {
-    productID = productID.replaceAll(productID.substring(productID.lastIndexOf('.v')), '');
+    if (productID.contains(".v")) {
+      productID = productID.replaceAll(productID.substring(productID.lastIndexOf('.v')), '');
+    }
     return _purchases.firstWhere( (purchase) => purchase.productID == productID, orElse: () => null);
   }
 
@@ -105,7 +107,8 @@ class AddonsShopState extends State<AddonsShop> {
                                 FlatButton(
                                   child: Text('BUY', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
                                   color: Color.fromARGB(255, 75, 208, 222),
-                                  onPressed: () => _buyProduct(_products[piAdd20Points]),
+                                  disabledColor: Color.fromARGB(255, 128, 128, 128),
+                                  onPressed: null == _hasPurchased(piInfinitePoints) && null == _hasPurchased(piInfinitePointsOld) ? () =>  _buyProduct(_products[piAdd20Points]) : null,
                                 ),
                                 ]
                           ),
@@ -119,7 +122,8 @@ class AddonsShopState extends State<AddonsShop> {
                                 FlatButton(
                                   child: Text('BUY', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
                                   color: Color.fromARGB(255, 75, 208, 222),
-                                  onPressed: () => _buyProduct(_products[piAdd60Points]),
+                                  disabledColor: Color.fromARGB(255, 128, 128, 128),
+                                  onPressed: null == _hasPurchased(piInfinitePoints) && null == _hasPurchased(piInfinitePointsOld) ? () =>  _buyProduct(_products[piAdd60Points]) : null,
                                 ),
                               ]
                           ),
@@ -133,9 +137,9 @@ class AddonsShopState extends State<AddonsShop> {
 //                          Text(_products[piInfinitePoints].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
                           Text(_products[piInfinitePoints].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
                           FlatButton(
-                            child: Text(null == _hasPurchased(piInfinitePoints) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                            child: Text(null == _hasPurchased(piInfinitePoints) && null == _hasPurchased(piInfinitePointsOld) ? 'BUY' : 'RE-ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
                             color: Color.fromARGB(255, 75, 208, 222),
-                            onPressed: () => null == _hasPurchased(piInfinitePoints) ? _buyProduct(_products[piInfinitePoints]) : _enablePurchase(piInfinitePoints),
+                            onPressed: () => null == _hasPurchased(piInfinitePoints) && null == _hasPurchased(piInfinitePointsOld) ? _buyProduct(_products[piInfinitePoints]) : (null != _hasPurchased(piInfinitePointsOld) ? _enablePurchase(piInfinitePointsOld) : _enablePurchase(piInfinitePoints)),
                           ),
                         ]
                     ),
@@ -150,7 +154,7 @@ class AddonsShopState extends State<AddonsShop> {
                           Text(_products[piMapsPack].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
                           Text(_products[piMapsPack].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
                           FlatButton(
-                            child: Text(null == _hasPurchased(piMapsPack) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                            child: Text(null == _hasPurchased(piMapsPack) ? 'BUY' : 'RE-ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
                             color: Color.fromARGB(255, 88, 136, 226),
                             onPressed: () => null == _hasPurchased(piMapsPack) ? _buyProduct(_products[piMapsPack]) : _enablePurchase(piMapsPack),
                           ),
@@ -164,9 +168,9 @@ class AddonsShopState extends State<AddonsShop> {
                           Text(_products[piSkipWaterPack].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
                           Text(_products[piSkipWaterPack].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
                           FlatButton(
-                            child: Text(null == _hasPurchased(piSkipWaterPack) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                            child: Text(null == _hasPurchased(piSkipWaterPack) && null == _hasPurchased(piSkipWaterPackOld) ? 'BUY' : 'RE-ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
                             color: Color.fromARGB(255, 88, 136, 226),
-                            onPressed: () => null == _hasPurchased(piSkipWaterPack) ? _buyProduct(_products[piSkipWaterPack]) : _enablePurchase(piSkipWaterPack),
+                            onPressed: () => null == _hasPurchased(piSkipWaterPack) && null == _hasPurchased(piSkipWaterPackOld) ? _buyProduct(_products[piSkipWaterPack]) : (null != _hasPurchased(piSkipWaterPackOld) ? _enablePurchase(piSkipWaterPackOld) : _enablePurchase(piSkipWaterPack)),
                           ),
                         ]
                     ),
@@ -178,9 +182,9 @@ class AddonsShopState extends State<AddonsShop> {
                           Text(_products[piExtendRadius20km].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
                           Text(_products[piExtendRadius20km].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
                           FlatButton(
-                            child: Text(null == _hasPurchased(piExtendRadius20km) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                            child: Text(null == _hasPurchased(piExtendRadius20km) && null == _hasPurchased(piExtendRadius20kmOld) ? 'BUY' : 'RE-ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
                             color: Color.fromARGB(255, 88, 136, 226),
-                            onPressed: () => null == _hasPurchased(piExtendRadius20km) ? _buyProduct(_products[piExtendRadius20km]) : _enablePurchase(piExtendRadius20km),
+                            onPressed: () => null == _hasPurchased(piExtendRadius20km) && null == _hasPurchased(piExtendRadius20kmOld) ? _buyProduct(_products[piExtendRadius20km]) : (null != _hasPurchased(piExtendRadius20kmOld) ? _enablePurchase(piExtendRadius20kmOld) : _enablePurchase(piExtendRadius20km)),
                           ),
                         ]
                     ),
@@ -195,7 +199,7 @@ class AddonsShopState extends State<AddonsShop> {
                           Text(_products[piEverythingPack].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
                           Text(_products[piEverythingPack].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
                           FlatButton(
-                            child: Text(null == _hasPurchased(piEverythingPack) ? 'BUY' : 'ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                            child: Text(null == _hasPurchased(piEverythingPack) ? 'BUY' : 'RE-ENABLE', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
                             color: Color.fromARGB(255, 88, 136, 226),
                             onPressed: () => null == _hasPurchased(piEverythingPack) ? _buyProduct(_products[piEverythingPack]) : _enablePurchase(piEverythingPack),
                           ),
