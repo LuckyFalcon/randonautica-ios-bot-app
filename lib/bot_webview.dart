@@ -85,6 +85,13 @@ class BotWebView extends StatelessWidget {
     );
 
     if (result != null && result != '') {
+      if (result.productID == piAdd20PointsOld || result.productID == piAdd60PointsOld) {
+        // consume any left over unconsumed get points/get more points from the old pre-bot Android app
+        print("[IAP] Consuming " + result.productID);
+        _iap.consumePurchase(result);
+        purchases.remove(result);
+      }
+
       // flutter->javascript (send to bot the in-app purchase details)
       var json = _purchaseDetails2Json(result);
       var eval = "sendIAPToBot('" + json + "');";
@@ -280,17 +287,16 @@ class BotWebView extends StatelessWidget {
 
     for (PurchaseDetails purchase in response.pastPurchases) {
       print("[IAP] Past purchase: " + purchase.productID + " => status is: " + purchase.status.toString());
-      if (Platform.isIOS) {
-        InAppPurchaseConnection.instance.completePurchase(purchase, developerPayload: userID);
-      }
+      InAppPurchaseConnection.instance.completePurchase(purchase, developerPayload: userID);
     }
 
     purchases = response.pastPurchases;
   }
 
   void _enablePurchase(PurchaseDetails purchase) {
-    print("[IAP] Verifying purchase of " + purchase.productID);
     if (purchase != null && purchase.status == PurchaseStatus.purchased) {
+      print("[IAP] Verified purchase of " + purchase.productID);
+
       // flutter->javascript (send to bot the in-app purchase details)
       var json = _purchaseDetails2Json(purchase);
       var eval = "sendIAPToBot('" + json + "');";

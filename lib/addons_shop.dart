@@ -105,11 +105,14 @@ class AddonsShopState extends State<AddonsShop> {
 //                                Text(_products[piAdd20Points].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
                                 Text(_products[piAdd20Points].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
                                 FlatButton(
-                                  child: Text('BUY', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                                  child: Text(null != _hasPurchased(piAdd20PointsOld) ? 'RELOAD' : 'BUY', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
                                   color: Color.fromARGB(255, 75, 208, 222),
                                   disabledColor: Color.fromARGB(255, 128, 128, 128),
-                                  onPressed: null == _hasPurchased(piInfinitePoints) && null == _hasPurchased(piInfinitePointsOld) ? () =>  _buyProduct(_products[piAdd20Points]) : null,
-                                ),
+                                  onPressed: null == _hasPurchased(piInfinitePoints) && null == _hasPurchased(piInfinitePointsOld) ?
+                                                null != _hasPurchased(piAdd20PointsOld) ?
+                                                    () => _enablePurchase(piAdd20PointsOld) : () =>  _buyProduct(_products[piAdd20Points])
+                                                : null, // <-- disables button with no callback set
+                                  ),
                                 ]
                           ),
                           Column(
@@ -120,10 +123,13 @@ class AddonsShopState extends State<AddonsShop> {
 //                                Text(_products[piAdd60Points].description, style: TextStyle(color: Colors.white, fontSize: iapDescFontSize)),
                                 Text(_products[piAdd60Points].price, style: TextStyle(color: Colors.white, fontSize: iapPriceFontSize)),
                                 FlatButton(
-                                  child: Text('BUY', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
+                                  child: Text(null != _hasPurchased(piAdd60PointsOld) ? 'RELOAD' : 'BUY', style: TextStyle(color: Colors.white, fontSize: iapBtnFontSize)),
                                   color: Color.fromARGB(255, 75, 208, 222),
                                   disabledColor: Color.fromARGB(255, 128, 128, 128),
-                                  onPressed: null == _hasPurchased(piInfinitePoints) && null == _hasPurchased(piInfinitePointsOld) ? () =>  _buyProduct(_products[piAdd60Points]) : null,
+                                    onPressed: null == _hasPurchased(piInfinitePoints) && null == _hasPurchased(piInfinitePointsOld) ?
+                                    null != _hasPurchased(piAdd60PointsOld) ?
+                                        () => _enablePurchase(piAdd60PointsOld) : () =>  _buyProduct(_products[piAdd60Points])
+                                        : null, // <-- disables button with no callback set
                                 ),
                               ]
                           ),
