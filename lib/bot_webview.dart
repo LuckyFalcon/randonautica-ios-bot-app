@@ -24,7 +24,7 @@ final String piInfinitePoints = 'fatumbot.addons.nc.infinite_points.v4';
 final String piInfinitePointsOld = 'infinte_points';
 
 final String piExtendRadius20km = 'fatumbot.addons.nc.extend_radius_20km.v4';
-final String piExtendRadius20kmOld = 'radius_extend';
+final String piExtendRadius20kmOld = 'extend_radius';
 
 final String piMapsPack = 'fatumbot.addons.nc.maps_pack.v2';
 
