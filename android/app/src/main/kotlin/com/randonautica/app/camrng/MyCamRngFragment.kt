@@ -56,7 +56,7 @@ class MyCamRngFragment : Fragment(), SurfaceHolder.Callback, Handler.Callback {
         //Set entropy left from entropy given
         val bundle = this.arguments
         if (bundle != null) {
-            entropyneeded = bundle.getInt("bytesNeeded", 3000)
+            entropyneeded = bundle.getInt("bytesNeeded", 109816)
         }
 
         rootView.entropyLeftTextView.text = entropyneeded.toString();

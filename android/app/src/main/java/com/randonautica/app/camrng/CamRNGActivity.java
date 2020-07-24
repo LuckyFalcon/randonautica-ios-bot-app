@@ -20,7 +20,7 @@ public class CamRNGActivity extends FragmentActivity implements MyCamRngFragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         MyCamRngFragment MyCamRngFragment = new MyCamRngFragment();
         Bundle arguments = new Bundle();
-        arguments.putInt("bytesNeeded", getIntent().getIntExtra("bytesNeeded", 3000));
+        arguments.putInt("bytesNeeded", getIntent().getIntExtra("bytesNeeded", 109816));
         MyCamRngFragment.setArguments(arguments);
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, MyCamRngFragment, tag)
