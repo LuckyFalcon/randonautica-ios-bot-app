@@ -1,0 +1,4 @@
+<resources>
+    <!-- camrng -->
+    <dimen name="radius">100dp</dimen>
+</resources>

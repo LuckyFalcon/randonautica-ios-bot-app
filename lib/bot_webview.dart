@@ -44,9 +44,15 @@ class BotWebView extends StatelessWidget {
   // flutter->ios(swift) (used to load the TrueEntropy Camera RNG view controller)
   Future<void> _navToCamRNG(int bytesNeeded) async {
     try {
-      await platform.invokeMethod('goToTrueEntropy', bytesNeeded);
+      if (Platform.isAndroid) {
+        // Flutter->Android (Java/Kotlin) (used to load an implementation of awasisto's camrng - https://github.com/awasisto/camrng/)
+        await platform.invokeMethod('gotoCameraRNG', bytesNeeded);
+      } else if (Platform.isIOS) {
+        // Flutter->Android (Swift) (used to load the a camrng implementation done with vault12's TrueEntropy - https://github.com/vault12/TrueEntropy)
+        await platform.invokeMethod('goToTrueEntropy', bytesNeeded);
+      }
     } on PlatformException catch (e) {
-      print("Failed: '${e.message}'.");
+      print("Failed to load CamRNG: '${e.message}'.");
     }
   }
 
