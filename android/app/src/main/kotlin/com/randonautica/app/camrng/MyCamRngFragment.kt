@@ -22,11 +22,9 @@ import androidx.annotation.RequiresApi
 import com.randonautica.app.R
 import com.randonautica.app.camrng.NoiseBasedCamRng
 import kotlinx.android.synthetic.main.dialog_camrng.view.*
+import android.util.Log
 
 class MyCamRngFragment : Fragment(), SurfaceHolder.Callback, Handler.Callback {
-
-    private var pixelsUsed = 2500;  //Sets the amount of pixels
-
     companion object {
         const val REQUEST_PERMISSIONS = 1
         var mCameraSurface: Surface? = null
@@ -56,7 +54,7 @@ class MyCamRngFragment : Fragment(), SurfaceHolder.Callback, Handler.Callback {
         //Set entropy left from entropy given
         val bundle = this.arguments
         if (bundle != null) {
-            entropyneeded = bundle.getInt("bytesNeeded", 109816)
+            entropyneeded = bundle.getInt("bytesNeeded", 0)
         }
 
         rootView.entropyLeftTextView.text = entropyneeded.toString();
@@ -66,33 +64,14 @@ class MyCamRngFragment : Fragment(), SurfaceHolder.Callback, Handler.Callback {
 
     override fun onStart() {
         super.onStart()
-
-        if (ContextCompat.checkSelfPermission(this.requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-            setupRngAndViews()
-        } else {
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CAMERA), REQUEST_PERMISSIONS)
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        if (requestCode == REQUEST_PERMISSIONS) {
-            if (grantResults.size == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                setupRngAndViews()
-            } else {
-                //  finish()
-            }
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        }
+        setupRngAndViews()
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private fun setupRngAndViews() {
-
         mSurfaceView = surfaceViewCAM;
         mSurfaceHolder = mSurfaceView.getHolder();
         mSurfaceHolder.addCallback(this);
-
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -100,20 +79,18 @@ class MyCamRngFragment : Fragment(), SurfaceHolder.Callback, Handler.Callback {
         if (mSurfaceCreated) {
             try {
                 //Set image animation to spin
-                val rotate =  RotateAnimation(0F, 359F, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+                val rotate = RotateAnimation(0F, 359F, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
                 rotate.setRepeatCount(Animation.INFINITE)
                 rotate.setDuration(10000)
                 rotate.setInterpolator(LinearInterpolator())
                 camRNGImage.startAnimation(rotate)
 
                 //Start camRNG instance
-                camRng = NoiseBasedCamRng.newInstance(context = requireContext(), numberOfPixelsToUse = pixelsUsed).apply {
-                    channel = NoiseBasedCamRng.Channel.RED;
-                }
+                camRng = NoiseBasedCamRng.newInstance(context = requireContext());
 
                 //Set TextView in view
                 entropyLeftTextView.text = entropyneeded.toString()
-                usedPixelsTextView.text = pixelsUsed.toString()
+                usedPixelsTextView.text = NoiseBasedCamRng.getNumberOfPixelsInUse().toString()
 
                 //Start timer
                 timeLapsedCmTimer.start()
@@ -123,7 +100,6 @@ class MyCamRngFragment : Fragment(), SurfaceHolder.Callback, Handler.Callback {
 
                 //Set cancel button
                 camRNGCancelButton.setOnClickListener {
-
                     SM?.sendEntropyObj(0, 0.toString())
                     compositeDisposable.dispose()
                 }
@@ -150,7 +126,6 @@ class MyCamRngFragment : Fragment(), SurfaceHolder.Callback, Handler.Callback {
 
                                         //Send message to main activity and launch Randonautfragment
                                         SM?.sendEntropyObj(entropyneeded, sb.toString().substring(0,entropyneeded))
-
                                     }
                                 }
                 )
