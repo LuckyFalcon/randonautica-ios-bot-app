@@ -201,7 +201,10 @@ class BotWebView extends StatelessWidget {
           OSiOSSettings.inAppLaunchUrl: true
         }
     );
+
     OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
+    OneSignal.shared.setLocationShared(false);
+
     var status = await OneSignal.shared.getPermissionSubscriptionState();
     webView.evaluateJavascript('sendPushIdToBot("${status.subscriptionStatus.userId}");');
   }
