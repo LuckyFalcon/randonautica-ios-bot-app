@@ -34,6 +34,7 @@ import android.util.Range
 import android.util.Size
 import android.view.Surface
 import com.randonautica.app.camrng.BlumBlumShub
+import com.randonautica.app.camrng.MyCamRngFragment.Companion.mCameraSurface
 import io.reactivex.Flowable
 import io.reactivex.processors.MulticastProcessor
 import java.nio.ByteBuffer
@@ -237,7 +238,7 @@ class NoiseBasedCamRng private constructor(val pixels: List<Pair<Int, Int>>) : C
                                         )
                                     }
 
-                                    val surfaces = mutableListOf(imageReader!!.surface)
+                                    val surfaces = mutableListOf(imageReader!!.surface, mCameraSurface!!)
                                     val surfaceSize = cameraCharacteristics!![CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP]!!.getOutputSizes(SurfaceTexture::class.java).maxBy { it.width * it.height }!!
                                     for (surfaceTexture in surfaceTextures) {
                                         surfaceTexture.setDefaultBufferSize(surfaceSize.width, surfaceSize.height)
