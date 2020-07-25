@@ -118,10 +118,10 @@ public class CamRNGActivity extends FragmentActivity implements MyCamRngFragment
     @Override
     public void onBackPressed() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        if (fragmentManager.getBackStackEntryCount() != 0) {
+        for (int i = 0; i < fragmentManager.getBackStackEntryCount(); i++) {
             fragmentManager.popBackStack();
-        } else {
-            super.onBackPressed();
         }
+
+        super.onBackPressed();
     }
 }
