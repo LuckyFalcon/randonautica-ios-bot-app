@@ -128,6 +128,10 @@ class BotWebView extends StatelessWidget {
   }
 
   _openMap(String url) async {
+    if (Platform.isAndroid) {
+      await launch(url);
+      return;
+    }
     var isStreetView = false;
     var isChain = false;
     var coords = url;
@@ -140,6 +144,8 @@ class BotWebView extends StatelessWidget {
       // Get all points' coordinates from the URL
       isChain = true;
       coords = url.replaceAll("https://www.google.com/maps/dir/", "").replaceAll("+", ",").replaceAll("/", "+to:");
+    } else if (url.contains("maps/search")) { // with maps/search
+      coords = coords.replaceAll("https://www.google.com/maps/search/?api=1&query=", "").replaceAll("&zoom=14", "");
     } else { // Normal Maps URL
       coords = coords.replaceAll("https://www.google.com/maps/place/", "").replaceAll("+", ",");
       coords = coords.substring(0, coords.indexOf("@")-1);
