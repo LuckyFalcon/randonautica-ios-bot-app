@@ -47,17 +47,17 @@
 		F49EEB2423C205D600928EFB /* AdvancedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1423C205D500928EFB /* AdvancedController.swift */; };
 		F49EEB2523C205D600928EFB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1523C205D500928EFB /* SettingsController.swift */; };
 		F49EEB2623C205D600928EFB /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1623C205D500928EFB /* Frame.swift */; };
-		F49EEB2723C205D600928EFB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F49EEB1723C205D500928EFB /* LICENSE */; };
 		F49EEB2823C205D600928EFB /* CameraFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1823C205D500928EFB /* CameraFrames.swift */; };
 		F49EEB2923C205D600928EFB /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1923C205D500928EFB /* Sample.swift */; };
 		F49EEB2A23C205D600928EFB /* BuildPi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1A23C205D500928EFB /* BuildPi.swift */; };
 		F49EEB2B23C205D600928EFB /* Collector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1B23C205D500928EFB /* Collector.swift */; };
 		F49EEB2C23C205D600928EFB /* TrueEntropy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1C23C205D500928EFB /* TrueEntropy.xcdatamodeld */; };
 		F49EEB2D23C205D600928EFB /* VonNeumannEnc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB1E23C205D600928EFB /* VonNeumannEnc.swift */; };
-		F49EEB2E23C205D600928EFB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F49EEB1F23C205D600928EFB /* README.md */; };
 		F49EEB2F23C205D600928EFB /* GenerationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB2023C205D600928EFB /* GenerationController.swift */; };
 		F49EEB3023C205D600928EFB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB2123C205D600928EFB /* Constants.swift */; };
 		F49EEB3123C205D600928EFB /* OneBitExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49EEB2223C205D600928EFB /* OneBitExtractor.swift */; };
+		F4C3FF1F24CC59A200841762 /* TRUEENTROPY-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F4C3FF1D24CC59A200841762 /* TRUEENTROPY-LICENSE */; };
+		F4C3FF2024CC59A200841762 /* TRUEENTROPY-README.md in Resources */ = {isa = PBXBuildFile; fileRef = F4C3FF1E24CC59A200841762 /* TRUEENTROPY-README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,19 +197,19 @@
 		F49EEB1423C205D500928EFB /* AdvancedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedController.swift; sourceTree = "<group>"; };
 		F49EEB1523C205D500928EFB /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		F49EEB1623C205D500928EFB /* Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
-		F49EEB1723C205D500928EFB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		F49EEB1823C205D500928EFB /* CameraFrames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFrames.swift; sourceTree = "<group>"; };
 		F49EEB1923C205D500928EFB /* Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		F49EEB1A23C205D500928EFB /* BuildPi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildPi.swift; sourceTree = "<group>"; };
 		F49EEB1B23C205D500928EFB /* Collector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collector.swift; sourceTree = "<group>"; };
 		F49EEB1D23C205D500928EFB /* TrueEntropy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrueEntropy.xcdatamodel; sourceTree = "<group>"; };
 		F49EEB1E23C205D600928EFB /* VonNeumannEnc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VonNeumannEnc.swift; sourceTree = "<group>"; };
-		F49EEB1F23C205D600928EFB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F49EEB2023C205D600928EFB /* GenerationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerationController.swift; sourceTree = "<group>"; };
 		F49EEB2123C205D600928EFB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F49EEB2223C205D600928EFB /* OneBitExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneBitExtractor.swift; sourceTree = "<group>"; };
 		F4AD0B7623C56729006EAF38 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		F4AD0B7723C5673D006EAF38 /* Randonautica.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Randonautica.entitlements; sourceTree = "<group>"; };
+		F4C3FF1D24CC59A200841762 /* TRUEENTROPY-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "TRUEENTROPY-LICENSE"; sourceTree = "<group>"; };
+		F4C3FF1E24CC59A200841762 /* TRUEENTROPY-README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "TRUEENTROPY-README.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,9 +364,7 @@
 				F49EEB1323C205D500928EFB /* Extractor.swift */,
 				F49EEB1623C205D500928EFB /* Frame.swift */,
 				F49EEB2023C205D600928EFB /* GenerationController.swift */,
-				F49EEB1723C205D500928EFB /* LICENSE */,
 				F49EEB2223C205D600928EFB /* OneBitExtractor.swift */,
-				F49EEB1F23C205D600928EFB /* README.md */,
 				F49EEAD823C202F200928EFB /* Resources */,
 				F49EEB1923C205D500928EFB /* Sample.swift */,
 				F49EEB1523C205D500928EFB /* SettingsController.swift */,
@@ -375,6 +373,8 @@
 				F49EEAE923C202F300928EFB /* TrueEntropy.xcdatamodeld */,
 				F492F8C723C0815E00B4D08A /* TrueEntropyCoordinator.swift */,
 				F49EEB1E23C205D600928EFB /* VonNeumannEnc.swift */,
+				F4C3FF1D24CC59A200841762 /* TRUEENTROPY-LICENSE */,
+				F4C3FF1E24CC59A200841762 /* TRUEENTROPY-README.md */,
 			);
 			path = TrueEntropy;
 			sourceTree = "<group>";
@@ -522,11 +522,11 @@
 				F49EEAFB23C202F300928EFB /* settings_icon2.png in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				F49EEAFA23C202F300928EFB /* settings_icon1.png in Resources */,
+				F4C3FF1F24CC59A200841762 /* TRUEENTROPY-LICENSE in Resources */,
 				F49EEAF823C202F300928EFB /* vault12.png in Resources */,
-				F49EEB2E23C205D600928EFB /* README.md in Resources */,
 				F49EEB0023C202F300928EFB /* OpenSans-Regular.ttf in Resources */,
+				F4C3FF2024CC59A200841762 /* TRUEENTROPY-README.md in Resources */,
 				F49EEB1223C205AC00928EFB /* TrueEntropyMain.storyboard in Resources */,
-				F49EEB2723C205D600928EFB /* LICENSE in Resources */,
 				F49EEAF723C202F300928EFB /* scale.png in Resources */,
 				F49EEAF923C202F300928EFB /* OpenSans-Light.ttf in Resources */,
 				F49EEAFD23C202F300928EFB /* OpenSans-ExtraBold.ttf in Resources */,
