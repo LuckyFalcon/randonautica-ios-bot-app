@@ -317,6 +317,15 @@ class BotWebView extends StatelessWidget {
           textColor: Colors.white,
           backgroundColor: Color.fromARGB(255, 88, 136, 226)
       );
+
+      for (PurchaseDetails oldPurchase in purchases) {
+        if (oldPurchase.productID == purchase.productID) {
+          // Update record in memory
+          if (purchases.remove(oldPurchase)) {
+            purchases.add(purchase);
+          }
+        }
+      }
     }
   }
 
