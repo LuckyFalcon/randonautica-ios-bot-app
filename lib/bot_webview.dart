@@ -46,7 +46,7 @@ class BotWebView extends StatelessWidget {
     try {
       if (Platform.isAndroid) {
         // Flutter->Android (Java/Kotlin) (used to load an implementation of awasisto's camrng - https://github.com/awasisto/camrng/)
-        await platform.invokeMethod('gotoCameraRNG', bytesNeeded);
+        await platform.invokeMethod('gotoCameraRNG', bytesNeeded*2);
       } else if (Platform.isIOS) {
         // Flutter->Android (Swift) (used to load the a camrng implementation done with vault12's TrueEntropy - https://github.com/vault12/TrueEntropy)
         await platform.invokeMethod('goToTrueEntropy', bytesNeeded);
