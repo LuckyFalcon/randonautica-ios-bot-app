@@ -68,10 +68,8 @@ class AddonsShopState extends State<AddonsShop> {
   }
 
   PurchaseDetails _hasPurchased(String productID) {
-    if (productID.contains(".v")) {
-      productID = productID.replaceAll(productID.substring(productID.lastIndexOf('.v')), '');
-    }
-    return _purchases.firstWhere( (purchase) => purchase.productID == productID, orElse: () => null);
+    var purchaseDetail = _purchases.firstWhere( (purchase) => purchase.productID == productID, orElse: () => null);
+    return purchaseDetail;
   }
 
   @override
