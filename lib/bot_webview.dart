@@ -447,6 +447,7 @@ class BotWebView extends StatelessWidget {
             },
             navigationDelegate: (NavigationRequest request) {
               if (request.url.startsWith("https://www.google.com/maps/place/") ||
+                  request.url.startsWith("https://www.google.com/maps/search/") ||
                   request.url.startsWith("https://www.google.com/maps/dir/") ||
                   request.url.startsWith("https://www.google.com/maps/@?api=1") ||
                   request.url.startsWith("https://open.spotify.com/") ||
