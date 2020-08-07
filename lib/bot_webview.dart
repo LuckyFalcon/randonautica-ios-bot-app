@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:randonautica/addons_shop.dart';
+import 'package:randonautica/getLocation.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
@@ -73,11 +74,30 @@ class BotWebView extends StatelessWidget {
   //
   // flutter->ios(swift)/android. use native code, not webview/js to get the current location
   Future<void> _getCurrentLocation() async {
-    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    var lat = position.latitude?.toString();
-    var lon = position.longitude?.toString();
-    var eval = "currentLocationCallback(" + lat + "," + lon + ");";
-    webView.evaluateJavascript(eval);
+    Position position;
+    var lat;
+    var lon;
+    var eval;
+    try {
+      Position position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+          .timeout(Duration(seconds: 10));
+      print(position);
+      lat = position.latitude?.toString();
+      lon = position.longitude?.toString();
+      var eval = "currentLocationCallback(" + lat + "," + lon + ");";
+      webView.evaluateJavascript(eval);
+    } on TimeoutException catch (_) {
+      // A timeout occurred.
+      await getLocation().then((value) => {
+        lat = value.latitude,
+        lon = value.longitude,
+        lat = position.latitude?.toString(),
+        lon = position.longitude?.toString(),
+        eval = "currentLocationCallback(" + lat + "," + lon + ");",
+        webView.evaluateJavascript(eval),
+      });
+    }
   }
 
   //
@@ -228,7 +248,6 @@ class BotWebView extends StatelessWidget {
   /// In-app purchase stuff >>>
   /// https://fireship.io/lessons/flutter-inapp-purchases/
   ///
-
   /// Fatumbot User ID
   String userID = "";
 
@@ -372,11 +391,11 @@ class BotWebView extends StatelessWidget {
         // handle error here.
         print("[IAP] error: " + error);
         Toast.show("Purchase error: " + error,
-                    context,
-                    duration: Toast.LENGTH_LONG,
-                    gravity:  Toast.BOTTOM,
-                    textColor: Colors.red[600],
-                    backgroundColor: Colors.black
+            context,
+            duration: Toast.LENGTH_LONG,
+            gravity:  Toast.BOTTOM,
+            textColor: Colors.red[600],
+            backgroundColor: Colors.black
         );
       });
     }
@@ -385,7 +404,6 @@ class BotWebView extends StatelessWidget {
   ///
   /// <<< In-app purchase stuff
   ///
-
   BuildContext context;
 
   BotWebView();
@@ -397,7 +415,7 @@ class BotWebView extends StatelessWidget {
     var botUrl = "";
     if (Platform.isAndroid) {
 //      botUrl = "https://devbot.randonauts.com/devbotdl.html?src=android";
-        botUrl = "https://bot.randonauts.com/index3.html?src=android";
+      botUrl = "https://bot.randonauts.com/index3.html?src=android";
     } else if (Platform.isIOS) {
 //      botUrl = "https://devbot.randonauts.com/devbotdl.html?src=ios";
       botUrl = "https://bot.randonauts.com/index3.html?src=ios";
