@@ -89,8 +89,20 @@ class BotWebView extends StatelessWidget {
       var eval = "currentLocationCallback(" + lat + "," + lon + ");";
       webView.evaluateJavascript(eval);
     } on TimeoutException catch (_) {
-      requestLocationService();
-      Toast.show("Please try again", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+      try {
+        Position position = await Geolocator()
+            .getCurrentPosition()
+            .timeout(Duration(seconds: 10));
+        print(position);
+        lat = position.latitude?.toString();
+        lon = position.longitude?.toString();
+        var eval = "currentLocationCallback(" + lat + "," + lon + ");";
+        webView.evaluateJavascript(eval);
+      } on TimeoutException catch (_) {
+        requestLocationService();
+        Toast.show("Please try again", context,
+            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+      }
     }
   }
 
